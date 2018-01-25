@@ -1,0 +1,33 @@
+ .picker__date-display {
+    background-color: var(--celeste);
+}
+.picker__day.picker__day--today {
+    color: var(--azul);
+}
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    background-color: var(--celeste);
+    color: #ffffff;
+}
+.picker__close, .picker__today, .picker__clear {
+    color: var(--celeste);
+}
+.picker__clear {
+    color: #f44336;
+    float: left;
+}
+.picker__nav--prev:hover, .picker__nav--next:hover {
+    background: var(--celeste_claro);
+}
+.text-primary{
+    color: white !important
+}
+.clockpicker-canvas line {
+    stroke: var(--celeste);
+}
+.clockpicker-canvas-bg,.clockpicker-canvas-bearing  {
+    fill: var(--celeste);
+}
+
+.clockpicker-tick.active, .clockpicker-tick:hover {
+    background-color: rgba(106,183,255,0.25);
+}

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title th:text="${appname}"></title>
+    <STYLES>
+        <!-- =============== APP STYLES ===============-->
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <!-- =============== APP STYLES ===============-->
+        <!--material design for bootstrap-->
+
+        <link rel="stylesheet" href="../../css/materialize.min.css" />
+        <!--Bootstrap 4-->
+        <link rel="stylesheet" href="../../css/bootstrap.min.css">
+        <!--material icons for bootstrap-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link href="../../css/frontend.css" rel="stylesheet" />
+        <link href="../../css/assets/tarjetas.css" rel="stylesheet" />
+        <link href="../../css/assets/home.css" rel="stylesheet" />
+        <link href="../../css/assets/flex.css" rel="stylesheet" />
+
+
+    </STYLES>
+</head>
+
+<body>
+
+
+    <div role="navigation" class="ppal navbar navbar-fixed">
+        <nav>
+            <div class="nav-wrapper row">
+                <div class="col s12 m12 l12">
+                    <div class="col m1 s1 l1">
+                        <img src="../../img/logo.png" />
+                        <a href="#" data-activates="slide-out" class="button-collapse">
+                            <i class="material-icons">menu</i>
+                        </a>
+                    </div>
+                    <div id="leftArrow" class="col m1 s1 l1 offset-s1 offset-m1 offset-l1">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </div>
+                    <div id="viewContainer" class="col m6 l6 s6">
+                        <div id="tslshow">
+                            <div class="bktibx">
+                                <a class="itemCategory">HOME</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Cine y espectáculos</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Deportes</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Economí­a</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Moda</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Mundo</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Paí­s</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Tecnologí­a</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Música</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Transporte</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rightArrow" class="col m1">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </div>
+                    <div class="col m2 s2 l2 right">
+                        <ul class=" col l12 m12 s12 ">
+                            <li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Alertas">
+                                <a class="right-menu" href="/alert/scheduler" th:method="GET">
+                                    <i class="material-icons">notifications</i>
+                                </a>
+                            </li>
+                            <li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Mis notas">
+                                <a class="right-menu" href="/logout" th:method="GET">
+                                    <i class="material-icons">event_note</i>
+                                </a>
+                            </li>
+                            <li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Favoritos">
+                                <a class="right-menu" href="/logout" th:method="GET">
+                                    <i class="material-icons">star</i>
+                                </a>
+                            </li>
+                            <li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Salir">
+                                <a class="right-menu" href="/logout" th:method="GET">
+                                    <i class="material-icons">power_settings_new</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="wrapper">
+        <!--menu desplegable-->
+        <ul id="slide-out" class="side-nav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../../img/background.jpg" />
+                    </div>
+                    <img class="circle" src="../../img/logo.png" />
+                </div>
+            </li>
+            <li>
+                <th:block th:if="${roleUser  == '[ADMIN]'}">
+                    <ul th:replace="fragments/sidebar :: sidebar_ADMIN_Materialize"></ul>
+                </th:block>
+
+                <th:block th:if="${roleUser  == '[Periodista]'}">
+                    <ul th:replace="fragments/sidebar :: sidebar_Periodista_Materialize"></ul>
+                </th:block>
+
+            </li>
+        </ul>
+        <!--sidebar-->
+        <!--body-->
+        <nav id="sidebar" class="container-sidebar side-nav fixed" role="navigation">
+            <ul>
+                <li>
+                    <ul class=" list-unstyled components">
+                        <!--nube de tags-->
+                        <li class="menu-title">
+                            <i class="material-icons tiny">timeline</i> Tendencias</li>
+                        <li>
+                            <div class="flex-container">
+                                <span class="flex-item tags valign-wrapper">gobierno</span>
+                                <span class="flex-item tags valign-wrapper">argentina</span>
+                                <span class="flex-item tags valign-wrapper">pecado</span>
+                                <span class="flex-item tags valign-wrapper">Estados Unidos</span>
+                                <span class="flex-item tags valign-wrapper">Justicia</span>
+                                <span class="flex-item tags valign-wrapper">Mexico</span>
+                                <span class="flex-item tags valign-wrapper">Buenos Aires</span>
+                                <span class="flex-item tags valign-wrapper">Twitter</span>
+                                <span class="flex-item tags valign-wrapper">Brasil</span>
+                                <span class="flex-item tags valign-wrapper">Europa</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!--Filtros por canal -->
+                <li>
+                    <ul class=" list-unstyled components">
+                        <li>
+                            <ul class="collapsible " data-collapsible="accordion">
+                                <li class="menu-title">
+                                    <div class="collapsible-header">
+                                        <i class="material-icons medium">filter_list
+                                        </i> Filtros
+                                    </div>
+                                    <!-- Aca entr-->
+                                    <div class="collapsible-body">
+                                        <ul class="collapsible" data-collapsible="accordion">
+                                            <li class="menu-title">
+                                                <div class="collapsible-header ">
+                                                    <i class="material-icons  padding-collapsible">link
+                                                    </i> Fuentes
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <ul class="filtros-menu">
+                                                        <li id="botones">
+                                                            <div class="checkboxes padding-collapsible">
+                                                                <p>
+                                                                    <input type="checkbox" class="agencias" id="rss" value="rss" checked="checked" />
+                                                                    <label for="rss" text="rss">rss</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="checkbox" class=" agencias" id="twitter" value="twitter" checked="checked" />
+                                                                    <label for="twitter" text="twitter">twitter</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="checkbox" class=" agencias" id="reuters" value="reuters.com" checked="checked" />
+                                                                    <label for="reuters" text="reuters.com">reuters.com</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="checkbox" class=" agencias" id="AFP" value="AFP" checked="checked" />
+                                                                    <label for="reuters" text="AFP">AFP</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="checkbox" class=" agencias" id="AP" value="AP" checked="checked" />
+                                                                    <label for="AP" text="AP">AP</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input type="checkbox" class=" agencias" id="bloomberg.com" value="bloomberg.com" checked="checked" />
+                                                                    <label for="bloomberg.com" text="bloomberg.com">bloomberg.com</label>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul class="collapsible" data-collapsible="accordion">
+                                            <li class="menu-title">
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons tiny padding-collapsible">date_range
+                                                    </i> Fecha
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <ul class="filtros-menu ">
+                                                        <li>
+                                                            <div class="padding-collapsible">
+                                                                <p>
+                                                                    <input name="grupo" type="radio" class="yellow" id="filtroDia" />
+                                                                    <label for="filtroDia">Dí­a</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input name="grupo" type="radio" class="yellow" id="filtroMes" />
+                                                                    <label for="filtroMes">Mes</label>
+                                                                </p>
+                                                                <p>
+                                                                    <input name="grupo" type="radio" class="yellow" id="filtroTodo" checked="checked" />
+                                                                    <label for="filtroTodo">Todo</label>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!-- Boton para volver Arriba -->
+        <div class="fixed-action-btn hide" id="volverArriba">
+            <a href="#top" class="btn-floating btn-large red ">
+                <i class="material-icons">keyboard_arrow_up</i>
+            </a>
+        </div>
+        <!---->
+
+        <div id="content" class="">
+            <div class="row">
+                <div class="col m12 l12 s12">
+                    <div class="col s4 l4 m4 offset-s4 offset-l4 offset-m4">
+
+
+                        <nav id="busqueda" class="z-depth-1 ">
+                            <!--<nav>-->
+                            <div class="nav-wrapper">
+                                <form id="busquedaForm" action="">
+                                    <div class="input-field">
+                                        <input id="search" type="search" placeholder="Messi -Barcelona +Rosario" />
+                                        <label for="search">
+                                            <i class="material-icons prefix">search</i>
+                                        </label>
+                                        <i class="material-icons" id="ayuda">help</i>
+                                        <i class="material-icons" id="cancelarBusqueda">close</i>
+                                    </div>
+                                </form>
+                                <div id="ayuda-operadores" class="hide">
+
+                                    <span class="z-depth-1 col s4 offset-s8">
+                                        <h5 class="center-align ">
+                                            <b>Operadores de búsqueda</b>
+                                            <br />
+                                        </h5>
+                                        <h6>
+                                            <p class="center-align">
+                                                <em class="operador">AND</em>
+                                                <br />El resultado debe incluir obligatoriamente los dos elementos</p>
+                                            <p class="center-align">
+                                                <em class="operador">OR</em>
+                                                <br />El resultado debe incluir cualquiera de los dos elementos</p>
+                                            <p class="center-align">
+                                                <em class="operador">-</em>
+                                                <br />Escribe - delante de la palabra que quieres excluir.</p>
+                                            <p class="center-align">
+                                                <em class="operador">+ </em>
+                                                <br />Escribe + delante de la palabra para que ésta deba aparecer</p>
+                                            <br />
+                                        </h6>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- tabs de busqueda -->
+            <div class="row" id="tabs-container">
+                <ul id="tabs-swipe-demo" class="tabs tabs-fixed-width">
+                    <li class="indicator" style="display: none; right: 574px; left: 570px;"></li>
+                    <li class="tab active">
+                        <a class="tab-search active" value="messi" onclick="todos(id)" id="1043" data-categorymedia="7" data-categoryrss="17">messi</a>
+                        <span onclick="closeTab(this)"> x </span>
+                        <em id="news_1043" class="label label-danger" style="display: none;">+</em>
+                    </li>
+                </ul>
+                <div id="body-tarjeta " class="col s12 m12 l12 body-tabs">
+                    <div class="row alertas-notific ">
+                        <div class="col s12 m12 l12">
+                            <div class="col m4 offset-m4 s4 offset-s4 l4 offset-l4">
+                                <div class="input-field busqueda-mejorada">
+                                    <input id="moreSearch" onkeypress=" addMoreSearch(event,id);" type="text">
+                                    <label for="moreSearch" class="active">Búsqueda mejorada</label>
+                                </div>
+                            </div>
+                            <div class="col s2 m2 l2 offset-s2 offset-m2 offset-l2">
+                                <button onclick="addReport(id)" class="waves-effect waves-light tooltipped btn  btn-report-search" data-tooltip="Mandarme Email"
+                                    data-position="bottom" data-delay="50" data-tooltip-id="5f10b389-8976-675c-6356-ba67bc12f719"
+                                    id="Report_1043" style="color: black;">
+                                    <i class="material-icons">email</i>
+                                </button>
+                                <button onclick="addAlert(id)" class="waves-effect waves-light tooltipped btn btn-alert-search" data-tooltip="Notificarme"
+                                    data-position="bottom" data-delay="50" data-tooltip-id="a7afb514-0a82-80a6-4cb6-315a8fdfa9cb"
+                                    id="Alert_1043" style="color: black;">
+                                    <i class="material-icons">notifications</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div id="frameCardsInfopieces">
+                            <div class="col m12 left-align fecha-divisor">
+                                <span class="col m3 s3 l3" id="fecha">lunes 18 diciembre 2017</span>
+                                <span class="col m9 s9 9 linea derecha ">
+                                    <hr>
+                                </span>
+                            </div>
+                            <div id="cardOfInfopiece" class="card piezas z-depth-3" data-source="EL PAIS ESTILO" data-title="¿Rihanna, Amy Winehouse y Bowie pixelados? Hablamos con el fundador de la firma VIP"
+                                data-content="El 25 de junio de 2009 fue una fecha negra para la cultura mundial. Michael Jackson fallecía y su incontable legión de fans escuchaba en bucle sus discos y volvía a poner de moda los calcetines blancos que el artista había lucido a golpe de moonwalks durante su exitosa carrera. Mientras esto ocurría, un joven ilustrador belga, tan admirador del Rey del Pop como cualquiera que tenga algo de gusto y de idea de música, decidió hacerle su homenaje particular. &quot;Quise hacer un tributo personal, convirtiéndole en el primer personaje que diseñé para VIP -con &quot;p&quot; de píxel- y que publicaría online. Lo que no imaginaba es que este diseño se volvería viral de la noche a la mañana, y he continuado haciendo nuevos diseños que me han traído hasta donde estoy ahora&quot;. Así comienza la entrevista con Kristof Saelen, la mente que está detrás de Very Important Pixels, la marca que ha conseguido demostrar que hay celebrities tan populares que son reconocibles hasta cuando sus rostros están pixelados. &quot;La clave reside en que la resolución es lo suficientemente alta como para lograr una cara reconocible, pero lo suficientemente baja como para mantener un nivel de abstracción&quot;. Todo comenzó en 2001, cuando empezó a trabajar en distintos proyectos de marketing como diseñador gráfico hasta que encontró la oportunidad para iniciar su revolución en 8 bits. &quot;En 2003, me pidieron que creara nuevas tarjetas de visita para una pequeña start up. Pensé que sería divertido dibujar una versión pixelada de cada empleado. Cuando finalicé mi labor había un total de 120 trabajadores en la compañía, así que puede decirse que tengo una buena base en el diseño de rostros pixelados&quot;. Una idea, la de Very Important Píxels, en la que, sin buscarlo, confluyen dos conceptos antagónicos: la imagen de algunas de las personas más célebres del planeta y el uso del efecto pixelado, habitualmente unido al anonimato y la intimidad. &quot;¡Guau! Nunca lo vi de esa manera, pero me gusta el enfoque comentas y me encantaría decirte que ésta fue la premisa inicial. Sin embargo, la verdadera intención desde el principio fue poner en juego el aspecto retro de los 80, en el que la tecnología carecía de una alta definición, y combinarlo con personajes famosos, sin importar la época&quot;. A su primer y trágico diseño se le han unido retratos de famosos de todo tipo de ámbitos. Desde músicos como Prince, John Lennon o Freddie Mercury hasta divas como Madonna, Amy Winehouse, Marilyn Monroe o Miley Cyrus, pasando por actores como Samuel L. Jackson, Will Smith o Charles Chaplin y futbolistas como David Beckham, Leo Messi o Zlatan Ibrahimovic. Recientemente, la marca ha añadido modelos de productos consagrados como Converse, Coca-Cola o M&amp;M´s, tan pixeladamente reconocibles que nos recuerdan la sociedad gobernada por el consumismo en la que vivimos. &quot;Si te soy sincero, no hay una estrategia específica desde el punto de vista empresarial. El objetivo principal es mantener la creatividad y ofrecer diseños chulos, en lugar de buscar el éxito comercial. Creo que tengo un catálogo de al menos cincuenta diseños que no han sido vistos por el público, por lo que existe una oportunidad de crecimiento&quot;, asegura Kristof, que responde cuando se le pregunta acerca de la posibilidad de plasmar célebres personajes españoles en sus nuevas creaciones que cuenta con el boceto de dos pintores de fama mundial. &quot;Debo haberlos creado hace algunos años. Aunque no están disponibles en la tienda en línea en este momento, podrían ser una idea para una de las siguientes colecciones&quot;, afirma, sabedor del país para el que ofrece la entrevista y dejando ver que fuera de nuestras fronteras contamos con unos referentes culturales de calidad, alejados de las princesas del pueblo y famosos de un rato que alabamos de puertas para dentro. Y es que, a pesar de lo aficionados que somos a conocer las vidas de las celebridades, VIP lo aborda con gusto y aún no ha explotado sus ventas en España. &quot;Actualmente, la mayoría de las ventas se realizan online y contamos con envíos a domicilio hacia cualquier parte del mundo. Cuando comencé, tuve la suerte de contar con el apoyo de prestigiosas boutiques de todo el mundo, como Colette, Bathroom Graffiti y Galerías Lafayette (París), Patricia Field (Nueva York) o Kitson (Los Ángeles). Esa fue una genial forma de impulsar la marca, porque sin el apoyo de soportes tan grandes es difícil mantenerse en el mercado.&quot; Para terminar, y como firme creyente de que todo padre tiene un hijo favorito, le pregunto a Kristof por sus creaciones predilectas. &quot;Si tuviera que elegir, creo que me quedaría con David Bowie y Dave Grohl&quot;, y aprovecha para hacerme una confesión sorprendente, que dice mucho del tipo de comprador de la marca: &quot;Creo que los diseños más populares son los de Karl Lagerfeld y Anna Wintour&quot;. Así es Very Important Pixels y así es su fundador, un hombre que empezó su proyecto como un humilde pasatiempo y al que en la actualidad dedica las cuatro estaciones del año. &quot;Me tomo mi tiempo durante el invierno para preparar nuevos bocetos para la primavera y el verano. Como este año la temporada ha llegado más rápido de lo que esperaba, ¡creo que es mejor que nos despidamos y que me ponga a trabajar!&quot;. Puedes seguir Tentaciones en Facebook, Twitter, Instagram,o suscribirte aquí a la Newsletter."
+                                data-time="03:57" data-newstype="RSS" data-url="https://elpais.com/elpais/2017/12/16/tentaciones/1513424942_244983.html#?ref=rss&amp;format=simple&amp;link=link"
+                                onclick="openTab(this)" style="cursor: pointer;">
+                                <div class="card-action">
+                                    <div class="col s6 m6 l6 card-data">
+                                        <div class="col s3 m3 l3 valign-wrapper center-align time">
+                                            <p>03:57</p>
+                                        </div>
+                                        <div class="col s1 m1 l1 valign-wrapper center-align source">
+                                            <p>EL PAIS ESTILO</p>
+                                        </div>
+                                        <div class="col s1 m1 l1 valign-wrapper center-align category">
+                                            <p>Moda</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content white-text">
+                                    <span class="card-title">¿Rihanna, Amy Winehouse y Bowie pixelados? Hablamos con el fundador de la firma VIP</span>
+                                    <p>¿Rihanna, Amy Winehouse y Bowie pixelados? Hablamos con el fundador de la firma VIP</p>
+                                </div>
+                            </div>
+                            <div class="col m12 left-align fecha-divisor">
+                                <span class="col m3 s3 l3" id="fecha">viernes 10 noviembre 2017</span>
+                                <span class="col m9 s9 9 linea derecha ">
+                                    <hr>
+                                </span>
+                            </div>
+                            <div id="cardOfInfopiece" class="card piezas z-depth-3" data-source="EL PAIS ESTILO" data-title="Puyol: sobre la angustia, Piqué, Vanesa Lorenzo y el pádel"
+                                data-content="Llega a la entrevista ?cansado?, tras pasarse casi toda la semana participando en un torneo benéfico de pádel. Minutos antes, su pareja, la modelo barcelonesa Vanesa Lorenzo, nos ha hablado del entusiasmo de Carles Puyol (La Pobla de Segur, Lleida, 1978) por el deporte de la pala. El que fuera central del F.C. Barcelona entre 1999 y 2014 juega al pádel con la misma intensidad y el mismo nivel de compromiso con que jugó al fútbol. Puede que no sea un virtuoso, pero sigue siendo un portento físico. Ahora ya no le importa ganar o perder, ese par de verbos que le obsesionaron durante años. El foco de su vida está en su familia (tiene de dos hijas con Vanesa: Manuela, cuatro años, y María, dos), su relación de pareja, la agencia de representación de futbolistas que comparte con su excompañero y amigo Iván de la Peña o alianzas estratégicas como la que acaba de sellar con Uniqlo, la firma de moda japonesa de la que es imagen y embajador en España. Si Puyol juega al pádel es porque le apasiona competir, en primer lugar, contra su propio cuerpo. Contra esa máquina de precisión que le propulsó a la élite del fútbol, pero que acabó dejándole en la cuneta en la primavera de 2014, cuando tuvo que retirarse tras varias lesiones de rodilla de las que no consiguió recuperarse. Puyol rememora aquellos días en que se vio obligado a tirar la toalla, tras un largo periodo de recuperación frustrada en que el dolor se convirtió en parte sustancial de su rutina: ?En cuanto asumí que el deporte de élite se había acabado, mi preocupación pasó a ser si conseguiría recuperarme lo suficiente para llevar una vida normal, para vivir sin dolor. Hoy, puedo correr, puedo jugar con mis hijas, puedo participar en torneos de pádel. Esa vuelta a la normalidad y a la salud la valoro como un enorme éxito?. que el sentido del humor es compatible con la profesionalidad y con la excelencia. Siento que le silben. No se lo merece? De los casi 700 partidos que jugó como profesional, valora sobre todo una victoria por 1 a 0 contra el Real Madrid en el Camp Nou (?con gol de Ibrahimovic?) en noviembre de 2009, durante la segunda temporada de Guardiola. Aquel día rechazó con el cuerpo tres remates francos que parecían gol. Él, que marcó el tanto decisivo en la semifinal de la Copa del Mundo de Sudáfrica, se recuerda rechazando remates ajenos. ?¿Qué quieres??, concede, ?tengo mentalidad de defensa?. ¿Cuánta vida hay después del fútbol? Muchísima, por suerte. El fútbol es algo que me acompañará siempre en la vida. ¿Cuál es su recuerdo futbolístico más antiguo? Los partidos informales en la Pobla con mi hermano y sus amigos, varios años mayores que yo. Yo tendría unos seis años y solo me dejaban jugar si me ponía de portero. ¿Qué cualidades cree que vio la gente de Uniqlo en usted para ofrecerle que fuese su embajador en España? Vanesa [Lorenzo] me había hablado de la marca y de su filosofía de trabajo, que consiste en hacer accesibles la calidad y el buen gusto. Esa es una idea que me resulta atractiva. Entonces ellos se dirigieron a mí. Creo que me ven como un referente del deporte y de la cultura del esfuerzo. Y supongo que también valoraron que tengo una imagen bastante informal y poco convencional. ¿Fue Louis Van Gaal el que intuyó el extraordinario defensa que podría llegar usted a ser? No fue el primero, pero sí el que me dio el espaldarazo definitivo. Yo fui quemando etapas, disfrutando como un enano, porque el fútbol me apasionaba, pero sin plantearme nunca si iba a poder ganarme la vida como profesional. Van Gaal me encontró un hueco entre la élite. Aquel era un vestuario lleno de estrellas, pero el míster me convenció de que podía jugar con ellos y hacer una aportación importante al equipo. ¿Quién más fue decisivo en aquellos años? Laureano Ruiz [exentrenador del Barça y figura clave en los éxitos de La Masia], al que todos los que pasamos por las categorías inferiores del club debemos muchísimo. Y luego, compañeros como Iván De la Peña, con el que solo coincidí un año en el primer equipo, pero congenié al instante. Me enseñó muchísimo de fútbol y de la vida. O Xavi, que fue esencial en mi carrera, porque crecimos juntos. Desde la primera vez que coincidí en el campo con él, siendo los dos unos críos, tuve claro que había que darle el balón a él, que era quien sabía de verdad qué hacer con él. ¿Qué se siente jugando al lado de Messi? Te contagia su ambición. Siempre quiere más, nunca se cansa de ganar partidos y de marcar goles. Sientes que él está haciendo historia y que tú tienes el privilegio de estar a su lado, de ayudarle a ser el más grande. Usted formó una pareja de centrales legendaria con Piqué. Sí, es más joven que yo, pero llegó al equipo en un momento crucial para mí, en el que yo vivía el fútbol con angustia. La responsabilidad de ganar y de seguir ganando me pesaba. Él me contagió su optimismo y su alegría. Me demostró que el sentido del humor es compatible con la profesionalidad y con la excelencia. Siento que le silben. No se lo merece. Puedes seguir ICON en Facebook, Twitter, Instagram,o suscribirte aquí a la Newsletter."
+                                data-time="11:02" data-newstype="RSS" data-url="https://elpais.com/elpais/2017/11/03/icon/1509665835_455903.html#?ref=rss&amp;format=simple&amp;link=link"
+                                onclick="openTab(this)">
+                                <div class="card-action">
+                                    <div class="col s6 m6 l6 card-data">
+                                        <div class="col s3 m3 l3 valign-wrapper center-align time">
+                                            <p>11:02</p>
+                                        </div>
+                                        <div class="col s1 m1 l1 valign-wrapper center-align source">
+                                            <p>EL PAIS ESTILO</p>
+                                        </div>
+                                        <div class="col s1 m1 l1 valign-wrapper center-align category">
+                                            <p>Moda</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-content white-text">
+                                    <span class="card-title">Puyol: sobre la angustia, Piqué, Vanesa Lorenzo y el pádel</span>
+                                    <p>Puyol: sobre la angustia, Piqué, Vanesa Lorenzo y el pádel</p>
+                                </div>
+                            </div>
+                        </div>
+                        <span id="ajaxloading" style="display: none;">Se está procesando la información...</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- fin tabs de busqueda -->
+    </div>
+    <div class="hide">
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </div>
+
+    <div id="myModalNetworks" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true" class="modal  embebido fade">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="row">
+                <div class="col m12 menu-embebido valign-wrapper z-depth-2">
+                    <div class="left url-pieza col m8">
+                        <a href="" target="_blank" class="badge orange white-text piece left">url de la pieza original</a>
+                    </div>
+                    <div class=" col m4 right-align botones">
+                        <div th:replace="fragments/header :: header-Anotaciones"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row modalAll">
+                <div class="modal-body" id="modal-body">
+                    <div class="row modalAll">
+                        <div id="frameContent"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer">
+                <div class="col m12 container">
+                    <form class="row">
+                        <div class="input-field col s12 z-depth-1">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Anotacií³n</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="myModalNetworksCables" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true" class="modal  embebido fade">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="row">
+                <div class="col m12 menu-embebido valign-wrapper z-depth-2">
+                    <div class="left url-pieza col m8">
+                        <a class="badge orange white-text piece left">url de la pieza original</a>
+                    </div>
+                    <div class=" col m4 right-align botones">
+                        <div th:replace="fragments/header :: header-Anotaciones"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row modalAll">
+                <div class="modal-body" id="modal-body">
+                    <div class="row modalAll">
+                        <div id="frameContentCables"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer ">
+                <div class="col m12 container">
+                    <form class="row">
+                        <div class="input-field col s12 z-depth-1">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Anotacií³n</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModalNetworksTwitter" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true" class="modal embebido fade">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="row" id="row-embebido">
+                <div class="col m12 menu-embebido valign-wrapper z-depth-2">
+                    <div class="left url-pieza col m8">
+                        <a href="" target="_blank" class="badge orange white-text twitter left">url de la pieza original</a>
+                    </div>
+                    <div class=" col m4 right-align botones">
+                        <div th:replace="fragments/header :: header-Anotaciones"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="content-twitter">
+                <div class="col m12">
+                    <div class="embebido col m6 s4 l6">
+                        <div class="modal-body" id="modal-body">
+                            <div class="row">
+                                <div id="frameContentTwitter">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="anotacion footer col m6 s8 l6">
+                        <div class="col m12 container">
+                            <form class="row">
+                                <div class="input-field col s12 z-depth-1">
+                                    <textarea id="textareaTwitter" class="materialize-textarea" cols="50" rows="20"></textarea>
+                                    <label for="textareaTwitter">Anotacií³n</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <SCRIPTS>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+
+            var exceptionResponseHome = /*${exception}*/ null;
+
+            /*]]>*/
+            console.log("Script inline. ExceptionResponseHome: %o", exceptionResponseHome);
+            console.log(exceptionResponseHome)
+        </script>
+
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/twitter-widgets.min.js"></script>
+        <!--Tether necesario para bootrap-->
+        <script src="../../js/tether.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/materialize.min.js"></script>
+    </SCRIPTS>
+
+</body>
+
+</html>

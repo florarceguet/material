@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<!-- =============== APP STYLES ===============-->
+	<!--material design for bootstrap-->
+	<link rel="stylesheet" href="../../css/materialize.min.css" />
+	<!--Bootstrap 4-->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<!--material icons for bootstrap-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="../../css/frontend.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../css/transition.min.css">
+	<link rel="stylesheet" href="../../css/dropdown.min.css">
+	<link rel="stylesheet" href="../../css/assets/dropdown.css">
+
+</head>
+
+<body>
+	<div role="navigation" class="ppal navbar navbar-fixed">
+		<nav>
+			<div class="nav-wrapper row">
+				<div class="col s12 m12 l12">
+					<div class="col m1 s1 l1">
+						<img src="../../img/logo.png" />
+						<a href="#" data-activates="slide-out" class="button-collapse">
+							<i class="material-icons">menu</i>
+						</a>
+					</div>
+					<div id="leftArrow" class="col m1 s1 l1 offset-s1 offset-m1 offset-l1">
+						<i class="material-icons">keyboard_arrow_left</i>
+					</div>
+					<div id="viewContainer" class="col m6 l6 s6">
+						<div id="tslshow">
+							<div class="bktibx">
+								<a class="itemCategory">HOME</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Cine y espect&aacute;culos/a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Deportes</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Econom&iacutea</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Moda</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Mundo</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Pa&uacutes</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Tecnolog&iacutea</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">M&uacutesica</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Transporte</a>
+							</div>
+						</div>
+					</div>
+					<div id="rightArrow" class="col m1">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+					<div class="col m2 s2 l2 right">
+						<ul class=" col l12 m12 s12 ">
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Alertas">
+								<a class="right-menu" href="/alert/scheduler" th:method="GET">
+									<i class="material-icons">notifications</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Mis notas">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">event_note</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Favoritos">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">star</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Salir">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">power_settings_new</i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div class="wrapper">
+		<!--menu desplegable-->
+		<ul id="slide-out" class="side-nav">
+			<li>
+				<div class="user-view">
+					<div class="background">
+						<img src="../../img/background.jpg" />
+					</div>
+					<img class="circle" src="../../img/logo.png" />
+				</div>
+			</li>
+			<li>
+				<th:block th:if="${roleUser  == '[ADMIN]'}">
+					<ul th:replace="fragments/sidebar :: sidebar_ADMIN_Materialize"></ul>
+				</th:block>
+
+				<th:block th:if="${roleUser  == '[Periodista]'}">
+					<ul th:replace="fragments/sidebar :: sidebar_Periodista_Materialize"></ul>
+				</th:block>
+
+			</li>
+		</ul>
+		<!--sidebar-->
+		<!--body-->
+		<div id="gestion-rss" class="page-content">
+			<div class="row title-container">
+				<div class="col s12 left-align">
+					<div class="col s6">
+						<h2>
+							<b>Agregar nuevos RSS.</b>
+						</h2>
+						<p>Desde esta pantalla podr&aacute incluir nuevos RSS.</p>
+					</div>
+					<a data-target="modal-gestion-rss" class="btn-floating btn-large z-depth-2 right waves-effect waves-light pink tooltipped modal-trigger"
+					 data-position="bottom" data-delay="50" data-tooltip="Agregar rss">
+						<i class="material-icons">add</i>
+					</a>
+				</div>
+			</div>
+			<div id="list-of-rss">
+				<div class="row">
+					<div class="col m12">
+						<div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
+							<table class="highlight responsive-table">
+								<thead>
+									<tr>
+										<th>
+											<span>Nombre</span>
+										</th>
+										<th>
+											<span>Categor&iacutea</span>
+										</th>
+										<th>
+											<span>URL</span>
+										</th>
+										<th>
+											<span>Opciones</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<b>Infobae</b>
+										</td>
+										<td>Mundo</td>
+										<td>https://www.infobae.com/feeds/rss/</td>
+										<td>
+											<span>
+												<a href="#!" class="secondary-content  tooltipped" data-position="bottom" data-delay="50" data-tooltip="Actualizar">
+													<i class="material-icons small refrescar left">refresh</i>
+												</a>
+											</span>
+											<span>
+												<a href="#!" class="secondary-content tooltipped to-switch eliminar-td" data-position="bottom" data-delay="50" data-tooltip="Borrar"
+												 data-tooltip-id="8b0a1dfe-434d-283d-b5f4-b131a29f8de2">
+													<i class="material-icons eliminar left small">delete_forever</i>
+												</a>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>PortadaAmerica</td>
+										<td>Mundo</td>
+										<td>http://ep00.epimg.net/rss/elpais/portada_america.xml</td>
+										<td>
+											<span>
+												<a href="#!" class="secondary-content  tooltipped" data-position="bottom" data-delay="50" data-tooltip="Actualizar">
+													<i class="material-icons small refrescar left">refresh</i>
+												</a>
+											</span>
+											<span>
+												<a href="#!" class="secondary-content tooltipped to-switch eliminar-td" data-position="bottom" data-delay="50" data-tooltip="Borrar"
+												 data-tooltip-id="8b0a1dfe-434d-283d-b5f4-b131a29f8de2">
+													<i class="material-icons eliminar left small">delete_forever</i>
+												</a>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12 m12 l12">
+						<ul class="pagination col s6 m6 l6 offset-l3 offset-m3 offset-s3">
+							<li class="disabled">
+								<a href="#!">
+									<i class="material-icons">chevron_left</i>
+								</a>
+							</li>
+							<li class="active">
+								<a href="#!">1</a>
+							</li>
+							<li class="waves-effect">
+								<a href="#!">2</a>
+							</li>
+							<li class="waves-effect">
+								<a href="#!">3</a>
+							</li>
+							<li class="waves-effect">
+								<a href="#!">4</a>
+							</li>
+							<li class="waves-effect">
+								<a href="#!">5</a>
+							</li>
+							<li class="waves-effect">
+								<a href="#!">
+									<i class="material-icons">chevron_right</i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Structure -->
+	<div id="modal-gestion-rss" class="modal">
+		<div class="modal-content">
+			<div class="row">
+				<div class="col s12 m12 l12 modal-title">
+					<h2>
+						<b>Agregar Rss</b>
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12 s12 l12">
+					<form id="form-nuevo-rss">
+						<div class="input-field col s12">
+							<input placeholder="URL" name="urlRss" id="urlRss" type="text">
+							<label for="url-rss">URL RSS</label>
+						</div>
+						<div class="input-field col s12">
+							<input placeholder="Nombre" id="nombre-rss" type="text">
+							<label for="nombre-rss">Nombre RSS</label>
+						</div>
+						<div class="input-field col s12">
+							<div class="ui sub header"></div>
+							<div class="input-field ui fluid selection dropdown" id="select-plataforma">
+								<input type="hidden" name="plat-cat" id="plat-cat" tabindex="0">
+								<i class="dropdown icon"></i>
+								<div class="default text"></div>
+								<div class="menu">
+									<div class="item" value="1">Econom&iacutea</div>
+									<div class="item" value="2">Deportes</div>
+									<div class="item" value="3">Mundo</div>
+									<div class="item" value="1">Moda</div>
+									<div class="item" value="2">Teatro</div>
+									<div class="item" value="3">Tecnolog&iacutea</div>
+								</div>
+								<label>Categor&iacutea de la plataforma</label>
+
+							</div>
+						</div>
+						<button id="cerrar-modal" class="btn waves-effect waves-light grey lighten-1 right modal-close">Cerrar</button>
+						<button id="guardar-rss" class=" guardar btn waves-effect waves-light light-green right" type="submit" name="action">Guardar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/twitter-widgets.min.js"></script>
+<!--Tether necesario para bootrap-->
+<script src="../../js/tether.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/materialize.min.js"></script>
+<script src="../../js/jquery.validate.min.js"></script>
+<script src="../../js/frontEnd.js" th:src="@{/js/frontEnd.js}"></script>
+<script src="../../js/transition.min.js"></script>
+<script src="../../js/dropdown.min.js"></script>
+
+<script>	
+	$.validator.addMethod("regx", function (value, element, regexpr) {
+		return regexpr.test(value);
+	});
+
+	$("#form-nuevo-rss").validate({
+		rules: {
+
+			urlRss: {
+				//change regexp to suit your needs
+				regx: /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/,
+			},
+
+		},
+		//For custom messages
+		messages: {
+
+			urlRss: {
+				regx: "Ingrese una url v&uacutelida"
+			}
+		},
+		errorElement: 'div',
+		errorPlacement: function (error, element) {
+			var placement = $(element).data('error');
+			if (placement) {
+				$(placement).append(error)
+			}
+			else {
+				error.insertAfter(element);
+			}
+		}
+	});
+</script>

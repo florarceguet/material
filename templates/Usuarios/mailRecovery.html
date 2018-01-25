@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+
+    <style>
+       
+       body {
+           margin: 0;
+       }
+
+       h1 {
+           font-weight: 400;
+           font-size: 3rem;
+           line-height: 110%;
+           margin: 2.1rem 0 1.68rem 0;
+       }
+
+       p {
+           margin-top: 0;
+           margin-bottom: 1rem;
+       }
+
+       .btn {
+
+           background-color: #1E88E5;
+       }
+
+       .btn:hover,
+       .btn:visited {
+           background-color: #6AB7FF;
+       }
+
+
+       .btn:hover,
+       .btn {
+           -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+           box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+       }
+
+       .btn:focus,
+       .btn:hover {
+           text-decoration: none;
+       }
+
+       .waves-effect {
+           position: relative;
+           cursor: pointer;
+           display: inline-block;
+           overflow: hidden;
+           -webkit-user-select: none;
+           -moz-user-select: none;
+           -ms-user-select: none;
+           user-select: none;
+           -webkit-tap-highlight-color: transparent;
+           vertical-align: middle;
+           z-index: 1;
+           -webkit-transition: .3s ease-out;
+           transition: .3s ease-out;
+       }
+
+       .btn-large {
+           height: 54px;
+           line-height: 54px;
+       }
+
+
+       .btn {
+           text-transform: uppercase;
+           color: white;
+           padding: 0 2rem;
+           display: inline-block;
+           font-weight: 400;
+           line-height: 1.25;
+           text-align: center;
+           white-space: nowrap;
+           vertical-align: middle;
+           -webkit-user-select: none;
+           -moz-user-select: none;
+           -ms-user-select: none;
+           user-select: none;
+           border: 1px solid transparent;
+           border-radius: .25rem;
+           -webkit-transition: all .2s ease-in-out;
+           -o-transition: all .2s ease-in-out;
+           transition: all .2s ease-in-out;
+       }
+
+
+
+       table {
+           font-family: "Poppins", " Sans-Serif";
+           width: 80%;
+           align-self: center;
+           margin-left: 10%;
+           height: 100%;
+       }
+
+       table,
+       td {
+           border-collapse: collapse;
+           background-color: #fff;
+
+       }
+
+       th,
+       td {
+           padding: 5px;
+           text-align: center;
+       }
+
+       th {
+           background-color: #005CB2;
+           color: #fff;
+       }
+
+       #mensaje-bienvenida {
+           font-size: 2rem;
+           font-weight: bold;
+       }
+
+       #indicaciones td {
+           font-size: 1rem;
+       }
+
+       #datos-adicionales td {
+           color: grey;
+           font-size: 0.75em;
+           padding-top: 5em;
+       }
+
+       #btn-registrarme td {
+           padding: 3em 0 0 0;
+           margin: 0px auto;
+           line-height: 1px;
+       }
+
+       #copyright td {
+           padding-top: 6em;
+       }
+   </style>
+</head>
+
+<body>
+
+    <table id="t01">
+        <thead>
+            <th>
+                <h1>Cablera</h1>
+            </th>
+        </thead>
+        <tr id="mensaje-bienvenida">
+            <td>
+                <p>
+                    <b>Recuperaci&oacute;n de contraseña</b>
+                </p>
+            </td>
+        </tr>
+        <tr id="indicaciones">
+            <td>Para poder reestablecer su contrase&#241;a y volver a la plataforma, haz click en el siguiente bot&oacute;n</td>
+        </tr>
+
+        <tr id="btn-registrarme">
+            <td>
+                <a th:href="@{${urlBase}}">
+                    <button type="button" class="btn-large waves-effect waves-light btn ">Recuperar contrase&#241;a</button>
+                </a>
+            </td>
+        </tr>
+        <tr id="datos-adicionales">
+            <td>*NO RESPONDAS A ESTE MENSAJE YA QUE EL REMITENTE ES UNA CASILLA AUTOM&Aacute;TICA. ANTE CUALQUIER DUDA COMUN&Iacute;CATE CON EL ADMINISTRADOR DEL MEDIO.</td>
+        </tr>
+        <tr id="copyright">
+            <td>&copy; Cablera - 2018 </td>
+        </tr>
+
+    </table>
+
+</body>
+
+
+</html>

@@ -1,0 +1,793 @@
+.container-sidebar {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.side-nav.fixed {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  position: absolute;
+  z-index: 1;
+}
+
+
+.side-nav label {
+  padding: 0 auto;
+  margin: 0 auto;
+  color: inherit;
+}
+
+.filtros-menu {
+  display: inline-block;
+}
+
+#sidebar [type="checkbox"].filled-in:checked + label:after {
+    top: 0;
+    width: 16px;
+    height: 16px;
+    z-index: 0;
+}
+
+#sidebar [type="checkbox"].filled-in:checked + label:before {
+    top: 0;
+    left: 1px;
+    width: 6px;
+    height: 11px;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    -webkit-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+
+#sidebar [type="checkbox"] + label, #sidebar [type="radio"] + label,#slide-out [type="checkbox"] + label,#slide-out [type="radio"] + label {
+    position: relative !important;
+    padding-left: 25px !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    height: 20px !important;
+    font-size: 11px !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+#sidebar [type="checkbox"] + label {
+    line-height: 20px !important;
+}
+
+#sidebar [type="radio"] + label {
+    line-height: 27px !important;
+}
+
+/*********************************/
+.side-nav p {
+    margin-bottom: 0;
+    height: 0px;
+}
+
+.side-nav li {
+    float: none;
+    line-height: 30px;
+}
+
+.side-nav li.active {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.telam {
+    color: var(--telam) !important;
+}
+
+.ansa {
+    color: var(--ansa) !important;
+}
+
+.rss {
+    color: var(--rss) !important;
+}
+
+
+.section-title {
+    font-family: Poppins;
+    color: #3A6695;
+}
+
+/***************************************************/
+
+#sidebar.active {
+    min-width: 150px;
+    max-width: 150px;
+}
+
+#sidebar .sidebar-header strong {
+    display: none;
+}
+
+#sidebar.active .sidebar-header h3 {
+    display: none;
+}
+
+#sidebar.active .sidebar-header strong {
+    display: block;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    font-size: 0.85em;
+}
+
+#sidebar.active ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+#sidebar.active li[aria-expanded="false"]::before, #sidebar.active li[aria-expanded="true"]::before {
+    top: auto;
+    bottom: 5px;
+    right: 50%;
+    transform: translateX(50%);
+}
+nav#sidebar i, nav#sidebar [class^="mdi-"], nav#sidebar [class*="mdi-"], nav#sidebar i.material-icons {
+    display: inline;
+    font-size: inherit;
+    height: inherit;
+    line-height: inherit;
+}
+
+
+
+
+/***/
+
+
+/********** Tabs de categorias seleccionadas *****************************/
+
+#tabs-swipe-demo {
+    background-color: var(--celeste);
+    height: 5%;
+}
+
+#tabs-swipe-demo a.focus, #tabs-swipe-demo a.visited, #tabs-swipe-demo a.active, #tabs-swipe-demo a.hover,  #tabs-swipe-demo a {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+.tabs .tab:hover, .tabs .tab.active{
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border-bottom: 3px solid var(--mostaza);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.tabs .tab a, .tabs .tab {
+    color: white !important;
+    font-family: "Poppins";
+}
+.tabs .tab a {
+    display: initial !important;
+}
+
+.tab {
+    border: 1px solid #dde6e9;
+}
+
+.tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--mostaza);
+    will-change: left, right;
+}
+#cerrar-tab{
+    color:white;
+}
+#cerrar-tab {
+    color:white;
+   }
+
+.body-tabs {
+    border: 0.75px solid lightgrey;
+}
+
+.alertas-notific {
+    text-align: right;
+    margin-top: 1em;
+}
+
+.alertas-notific .btn {
+    color: #4F4F4F;
+    background-color: white;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.alertas-notific .btn:hover {
+    color: white !important;
+    background-color: var(--celeste);
+}
+#busqueda .nav-wrapper .input-field input[type="search"] {
+    right: 2rem;
+}
+
+#busqueda .material-icons.icon-close {
+    right: 2rem;
+}
+
+#busqueda .input-field input[type=search]:focus, nav#busqueda {
+    background-color: #f8f5f5 !important;
+    border: 0 !important;
+    /* -webkit-box-shadow: none !important;
+    box-shadow: none !important; */
+    color: #444 !important;
+}
+nav#busqueda label i{
+    color:#9a9a9a
+
+}
+nav#busqueda label i.material-icons {
+    line-height: 60px;
+}
+
+nav#busqueda i.material-icons {
+    font-size: 3rem;
+}
+nav#busqueda i.material-icons#ayuda{
+    font-size: 2rem;
+     padding-right: 0.5em;
+
+}
+#busqueda .nav-wrapper {
+    padding: 0;
+}
+
+#busqueda .active i {
+    /*display: none;*/
+    position: relative;
+    top: 40%;
+}
+ body.login,body.register, body.confirmPassword, body.recoverPassword{
+     background-image: url("../img/bg_login.jpg");
+     background-size: cover;
+ }
+
+.row .col.s12 .edit{
+    width: 80%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+/**/
+/**MAQUETA ANOTACIONES**/
+
+
+
+.notas .card-action .row {
+    margin: 0;
+}
+
+.notas .card-action button.waves-effect.waves-light.btn.celeste {
+    margin: 1em;
+    float: right;
+}
+
+.notas .badge {
+    color: white !important;
+}
+
+iframe {
+    width: 100%;
+    height: 95%;
+    border: 0;
+    margin-top: 3em;
+}
+
+#fbButton iframe{
+    margin-top: 0px !important;
+    width: 100%;
+}
+
+.resaltado {
+    background-color: rgba(255, 238, 88, 0.75);
+}
+
+div#myModalNetworks {
+    text-align: justify;
+    vertical-align: middle;
+    height: 50em;
+    max-height: 80%;
+    overflow: auto;
+    bottom: auto;
+}
+
+div#myModalNetworksCables {
+    text-align: justify;
+    vertical-align: middle;
+    height: 50em;
+    max-height: 80%;
+    overflow: auto;
+    bottom: auto;
+}
+
+#datos-pieza span {
+    padding: 1em 0.5em 1em 1em;
+}
+
+#datos-pieza span,.url-pieza a {
+    padding: 1em 0.5em 1em 1em;
+}
+
+div.contentInfopieces p::first-letter {
+    float: left;
+    font-size: 3em;
+    margin: 0 0.2em 0 0;
+    font-weight: bold;
+}
+
+.fixed-action-btn.horizontal {
+    padding: 4px;
+}
+
+.fixed-action-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 0;
+    z-index: 997;
+    float: right;
+}
+
+.url-pieza a,
+.menu-anotado #datos-pieza {
+    font-size: 0.8rem;
+    margin: 1.5em 0 0 0;
+}
+
+.menu-embebido,
+.menu-anotado {
+    padding: 5px !important;
+    border-bottom: 1px solid lightgrey;
+}
+
+.menu-embebido .fixed-action-btn.horizontal {
+    margin-right: 0.75em;
+}
+
+
+.menu-anotado {
+    margin-bottom: 2.5em;
+}
+
+#myModalNetworks textarea.materialize-textarea {
+    overflow-y: scroll;
+    padding: .8rem 0 0 0;
+    resize: none;
+    max-height: 5em;
+    height: auto;
+}
+
+#myModalNetworksCables textarea.materialize-textarea {
+    overflow-y: scroll;
+    padding: .8rem 0 0 0;
+    resize: none;
+    max-height: 5em;
+    height: auto;
+}
+
+.material-tooltip span{
+    font-family: "Poppins";
+}
+
+#frameContent{
+    /*cursor: cell;*/
+    width: 100%;
+}
+
+blockquote.EmbeddedTweet-tweet{
+    max-width: 100%;
+    width: 100%;
+}
+
+.EmbeddedTweet-tweet{
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+#myModalNetworksTwitter .EmbeddedTweet-tweet{
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+span{
+    display:inline-block;
+
+}
+#fecha{
+    color:black;
+}
+.linea hr{
+    border-top: 2px solid var(--celeste_claro);
+}
+.fecha-divisor{
+    margin: 1em 0;
+}
+
+blockquote.twitter-tweet {
+    max-width: 100%;
+    width: 100%;
+}
+
+.contentInfopieces h2{
+    margin-bottom: 18px;
+}
+
+p.bodyInfopieces{
+    font-size: 18px;
+    font-family: 'Slabo27px', serif;
+}
+
+#myModalNetworks .modal-content p{
+    max-height: 14em;
+    overflow-y: scroll ;
+}
+
+#myModalNetworksCables .modal-content p{
+    max-height: 14em;
+    overflow-y: scroll ;
+}
+
+#tabs-swipe-demo::-webkit-scrollbar-track
+{
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+background-color: #F5F5F5;
+}
+
+#tabs-swipe-demo::-webkit-scrollbar
+{
+width: 6px;
+background-color: #F5F5F5;
+height: 5px;
+}
+
+#tabs-swipe-demo::-webkit-scrollbar-thumb
+{
+background-color: grey;
+}
+
+#ayuda-operadores span{
+    padding:1em;
+    color:white;
+    font-size:8px;
+    background-color: grey;
+    opacity: 0.95;
+}
+
+em.operador{
+    font-weight:bold;
+}
+#ayuda{
+    margin-right: 1em;
+    color: #9a9a9a;
+}
+#ajaxloading{
+    display:none;
+}
+
+#volverArriba{
+    bottom: 6%;
+    display:scroll;
+    position:fixed;
+    right: 24px;
+}
+
+.modalAll{
+    height: 80%;
+}
+
+.contentInfopieces{
+    padding: 0 1.50rem !important;
+}
+#myModalNetworks .input-field.col.s12{
+    padding-right: 0;
+    padding-left: 1.5rem;
+}
+.titulo{
+    text-align: center;
+}
+.footer .container{
+    padding-right: 1.5rem;
+}
+
+#myModalNetworksCables .footer .container{
+    padding-right: 1.8rem !important;
+}
+
+.menu-embebido .botones,
+.menu-anotado .botones{
+    bottom: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.url-pieza a,.menu-anotado #datos-pieza {
+    font-size: 0.8rem;
+    margin: 0;
+}
+.menu-anotado .btn-floating{
+    vertical-align: text-bottom;
+}
+
+.bodyInfopieces{
+    font-size: 1em;
+}
+
+#frameContentCables{
+min-width: 100%;
+}
+
+
+@media(max-height: 800px) {
+    #myModalNetworks textarea.materialize-textarea {
+        height: 20%;
+        max-height:20% !important;
+    }
+    #myModalNetworks .modal-content p {
+        max-height: 80% !important;
+        overflow-y: scroll;
+        height: 80%;
+        padding-right: 1em;
+        margin-bottom: 2em;
+    }
+
+    #myModalNetworksCables textarea.materialize-textarea {
+        height: 20%;
+        max-height:20% !important;
+    }
+
+    #myModalNetworksCables .modal-content p {
+        max-height: 35em !important;
+        overflow-y: scroll;
+        height: 32em;
+        padding-right: 1em;
+        margin-bottom: 2em;
+    }
+}
+
+@media(max-height: 900px) {
+
+
+    #myModalNetworks textarea.materialize-textarea {
+        height: 5em;
+        max-height: 5em !important;
+    }
+    #myModalNetworks .modal-content p {
+        max-height: 80% !important;
+        overflow-y: scroll;
+        height: 21em;
+        padding-right: 1em;
+        margin-bottom: 2em;
+    }
+
+    #myModalNetworksCables textarea.materialize-textarea {
+        height: 5em;
+        max-height: 5em !important;
+    }
+    #myModalNetworksCables .modal-content p {
+        max-height: 80% !important;
+        overflow-y: scroll;
+        height: 21em;
+        padding-right: 1em;
+        margin-bottom: 2em;
+    }
+}
+@media(min-height: 901px) {
+
+    #myModalNetworks textarea.materialize-textarea {
+        height: 5em;
+        max-height: 5em !important;
+    }
+    #myModalNetworks .modal-content p {
+        max-height: 35em !important;
+        overflow-y: scroll;
+        height: 35em;
+        padding-right: 1em;
+        margin-bottom: 2em;
+    }
+
+    #myModalNetworksCables textarea.materialize-textarea {
+        height: 5em;
+        max-height: 5em !important;
+    }
+    #myModalNetworksCables .modal-content p {
+        max-height: 35em !important;
+        overflow-y: scroll;
+        height: 35em;
+        padding-right: 1em;
+        margin-bottom: 2em;
+    }
+}
+
+div#myModalNetworks {
+    text-align: justify;
+    vertical-align: middle;
+    height: 90%;
+    max-height: 90%;
+    overflow: auto;
+    bottom: auto;
+    width: 90%;
+    top:3% !important;
+}
+
+#myModalNetworks .footer {
+    position: absolute;
+    bottom: 0.5em;
+    width: 100%;
+    font-family: "Roboto";
+}
+
+div#myModalNetworksCables {
+    text-align: justify;
+    vertical-align: middle;
+    height: 90%;
+    max-height: 90%;
+    overflow: auto;
+    bottom: auto;
+    width: 90%;
+    top:0 !important;
+}
+
+#myModalNetworksCables .footer {
+    position: absolute;
+    bottom: 0.5em;
+    width: 100%;
+    font-family: "Roboto";
+}
+
+.space{
+    margin-right:10px;
+}
+
+#content-twitter{
+    max-height: 100%;
+    overflow-y: auto;
+    height:99%;
+}
+#frameContentTwitter{
+    width: 100%;
+}
+.EmbeddedTweet {
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    max-width: 100%;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(225, 232, 237);
+    border-image: initial;
+    border-radius: 4px;
+    width:100% !important;
+    max-width:100% !important
+}
+
+/**TWITTER EMBEBIDO*/
+.twitter-tweet {
+    display: inline-block;
+    font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 16px;
+    margin: 10px 5px;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.twitter-tweet p {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+.twitter-tweet a {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+    outline: 0 none;
+}
+
+.twitter-tweet a:hover,
+.twitter-tweet a:focus {
+    text-decoration: underline;
+}
+
+div#myModalNetworksTwitter {
+    width:96%;
+    height: 45em;
+    max-width: 96%;
+    margin-bottom: auto;
+    margin-top: auto;
+    top: 0% !important;
+}
+#myModalNetworksTwitter .footer .container,#myModalNetworksTwitter .input-field  {
+    padding-right: 0;
+}
+#myModalNetworksTwitter textarea.materialize-textarea {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 0;
+}
+
+#myModalNetworksTwitter .EmbeddedTweet.EmbeddedTweet--edge.js-clickToOpenTarget.tweet-InformationCircle-widgetParent {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+#myModalNetworksTwitter .footer {
+
+    font-family: "Roboto";
+}
+#myModalNetworksTwitter form{
+    height: 85%;
+}
+#myModalNetworksTwitter .input-field{
+    margin-top:2em;
+}
+
+.footer .input-field{
+    background-color: #f5f7fa;
+}
+#myModalNetworksCables p::-webkit-scrollbar-track,#myModalNetworksCables .footer textarea::-webkit-scrollbar-track, #myModalNetworks p::-webkit-scrollbar-track,#myModalNetworks .footer textarea::-webkit-scrollbar-track, iframe::-webkit-scrollbar-track,#content-twitter::-webkit-scrollbar-track,#myModalNetworksTwitter .footer textarea::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+    background-color: #F5F5F5 !important;
+}
+
+#myModalNetworksCables p::-webkit-scrollbar,#myModalNetworksCables .footer textarea::-webkit-scrollbar,#myModalNetworks p::-webkit-scrollbar,#myModalNetworks .footer textarea::-webkit-scrollbar,iframe::-webkit-scrollbar,#content-twitter::-webkit-scrollbar,#myModalNetworksTwitter .footer textarea::-webkit-scrollbar
+{
+    width: 6px !important;
+    background-color: #F5F5F5 !important;
+}
+
+#myModalNetworksCables p::-webkit-scrollbar-thumb,#myModalNetworksCables .footer textarea::-webkit-scrollbar-thumb,#myModalNetworks p::-webkit-scrollbar-thumb,#myModalNetworks .footer textarea::-webkit-scrollbar-thumb,iframe::-webkit-scrollbar-thumb,#content-twitter::-webkit-scrollbar-thumb,#myModalNetworksTwitter .footer textarea::-webkit-scrollbar-thumb
+{
+    background-color: var(--azul) !important;
+}
+
+.embebido,.anotacion
+{
+    height:100%
+}
+
+#row-embebido{
+    margin-bottom: 8px;
+}
+#myModalNetworksTwitter .anotacion.footer {
+    position: fixed;
+    right: 2em;
+}
+#myModalNetworksTwitter .modal-body {
+    padding: 12px !important;
+}
+
+#tabs-container .modal {
+    height: 95%;
+    width: 95%;
+    max-height: 95%;
+    margin-bottom: 1em;
+}

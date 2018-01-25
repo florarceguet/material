@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <!-- =============== APP STYLES ===============-->
+    <!--material design for bootstrap-->
+    <link rel="stylesheet" href="../../css/materialize.min.css" />
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <!--material icons for bootstrap-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="../../css/dropdown.min.css" rel="stylesheet" />
+    <link href="../../css/transition.min.css" rel="stylesheet" />
+    <link href="../../css/frontend.css" rel="stylesheet" />
+    <link href="../../css/assets/dropdown.css" rel="stylesheet" />
+    <style>
+        #formulario-medio .card-action {
+            text-align: center;
+            border-bottom: 1px solid lightgrey;
+
+        }
+
+        #formulario-medio .input-field .prefix {
+            height: 1em;
+            margin-top: 0.5em;
+            width: auto;
+        }
+
+        #formulario-medio .input-field .prefix~label,
+        #empresa-fb,
+        #empresa-tw,
+        #empresa-mail {
+            margin-left: 2.5rem;
+        }
+
+        #formulario-medio .card-content .row {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div role="navigation" class="ppal navbar navbar-fixed">
+        <nav>
+            <div class="nav-wrapper row">
+                <div class="col s12 m12 l12">
+                    <div class="col m1 s1 l1">
+                        <img src="../../img/logo.png" />
+                        <a href="#" data-activates="slide-out" class="button-collapse">
+                            <i class="material-icons">menu</i>
+                        </a>
+                    </div>
+                    <div id="leftArrow" class="col m1 s1 l1 offset-s1 offset-m1 offset-l1">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </div>
+                    <div id="viewContainer" class="col m6 l6 s6">
+                        <div id="tslshow">
+                            <div class="bktibx">
+                                <a class="itemCategory">HOME</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Cine y espect&aacute;culos</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Deportes</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Econom&iacutea</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Moda</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Mundo</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Pa&iacutes</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Tecnolog&iacutea</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">M&uacutesica</a>
+                            </div>
+                            <div class="bktibx">
+                                <a class="itemCategory">Transporte</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rightArrow" class="col m1">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </div>
+                    <div class="col m2 s2 l2 right">
+                        <ul class=" col l12 m12 s12 ">
+                            <li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Alertas">
+                                <a class="right-menu" href="/alert/scheduler" th:method="GET">
+                                    <i class="material-icons">notifications</i>
+                                </a>
+                            </li>
+                            <li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Mis notas">
+                                <a class="right-menu" href="/logout" th:method="GET">
+                                    <i class="material-icons">event_note</i>
+                                </a>
+                            </li>
+                            <li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Favoritos">
+                                <a class="right-menu" href="/logout" th:method="GET">
+                                    <i class="material-icons">star</i>
+                                </a>
+                            </li>
+                            <li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Salir">
+                                <a class="right-menu" href="/logout" th:method="GET">
+                                    <i class="material-icons">power_settings_new</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="wrapper">
+        <!--menu desplegable-->
+        <ul id="slide-out" class="side-nav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../../img/background.jpg" />
+                    </div>
+                    <img class="circle" src="../../img/logo.png" />
+                </div>
+            </li>
+            <li>
+                <th:block th:if="${roleUser  == '[ADMIN]'}">
+                    <ul th:replace="fragments/sidebar :: sidebar_ADMIN_Materialize"></ul>
+                </th:block>
+
+                <th:block th:if="${roleUser  == '[Periodista]'}">
+                    <ul th:replace="fragments/sidebar :: sidebar_Periodista_Materialize"></ul>
+                </th:block>
+
+            </li>
+        </ul>
+        <!--sidebar-->
+        <!--body-->
+        <div id="gestion-cuenta" class="page-content">
+            <div class="row title-container">
+                <div class="col s12 left-align">
+                    <div class="col s6">
+                        <h2>
+                            <p>
+                                <b>Datos del medio</b>
+                            </p>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div id="form-medio">
+                <form action="" class="validate-form" id="formulario-medio">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card horizontal" id="empresa-datos">
+                                <div class="card-stacked">
+                                    <div class="card-action">
+                                        <p>
+                                            <b>
+                                                <h4>Datos de la empresa</h4>
+                                            </b>
+                                        </p>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12 m12 l12">
+                                                <div class="input-field col s6 m6 l6">
+                                                    <input type="text" id="empresa-nombre" name="empresa-nombre">
+                                                    <label for="empresa-nombre">Raz&oacute;n Social</label>
+                                                </div>
+                                                <div class="input-field col s6 m6 l6">
+                                                    <input type="text" id="empresa-direccion" name="empresa-direccion">
+                                                    <label for="empresa-direccion">Direcci&oacute;n</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s12 m12 l12">
+                                                <div class="input-field col s6 m6 l6">
+                                                    <input type="text" id="empresa-ciudad" name="empresa-ciudad">
+                                                    <label for="empresa-ciudad">Ciudad</label>
+                                                </div>
+                                                <div class="input-field col s6 m6 l6">
+                                                    <div class="ui sub header"></div>
+                                                    <div class="input-field ui fluid  selection dropdown" id="select-pais">
+                                                        <input type="hidden" name="empresa-pais" id="empresa-pais" tabindex="0">
+                                                        <i class="dropdown icon"></i>
+                                                        <div class="default text"></div>
+                                                        <div class="menu">
+                                                            <div class="item" value="argentina">Argentina</div>
+                                                            <div class="item" value="chile">Chile</div>
+                                                            <div class="item" value="peru">Peru</div>
+                                                            <div class="item" value="uruguay">Uruguay</div>
+                                                        </div>
+                                                        <label>Pa&iacute;s</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s12 m12 l12">
+                                                <div class="input-field col s6 m6 l6">
+                                                    <input type="text" id="empresa-sitio" name="empresa-sitio">
+                                                    <label for="empresa-sitio">Sitio Web</label>
+                                                </div>
+                                                <div class="input-field col s6 m6 l6">
+                                                    <div class="ui sub header"></div>
+                                                    <div class="input-field ui fluid  selection dropdown" id="select-tipo-medio">
+                                                        <input type="hidden" name="empresa-tipo" id="empresa-tipo" tabindex="0">
+                                                        <i class="dropdown icon"></i>
+                                                        <div class="default text"></div>
+                                                        <div class="menu">
+                                                            <div class="item" value="TV">TV</div>
+                                                            <div class="item" value="Radio">Radio</div>
+                                                            <div class="item" value="Web">Web</div>
+                                                        </div>
+                                                        <label>Tipo de medio</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card horizontal" id="empresa-redes">
+                                <div class="card-stacked">
+                                    <div class="card-action">
+                                        <p>
+                                            <b>
+                                                <h4>Redes Sociales</h4>
+                                            </b>
+                                        </p>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12 l12 m12">
+
+                                                <div class="input-field col s6 m6 l6">
+                                                    <img src="../../img/socialMedia/facebook.jpg" class="prefix circle responsive-img" alt="">
+                                                    <input type="text" id="empresa-fb" name="empresa-fb">
+                                                    <label for="empresa-fb">Facebook</label>
+                                                </div>
+                                                <div class="input-field col s6 m6 l6">
+                                                    <img src="../../img/socialMedia/twitter.jpg" class="prefix circle responsive-img" alt="">
+                                                    <input type="text" id="empresa-tw" name="empresa-tw">
+                                                    <label for="empresa-tw">Twitter</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s12 l12 m12">
+                                                <div class="input-field col s6 m6 l6">
+                                                    <img src="../../img/mail.png" class="prefix circle responsive-img" alt="">
+                                                    <input type="text" id="empresa-mail" name="empresa-mail">
+                                                    <label for="empresa-mail">Mail</label>
+                                                </div>
+                                                <div class="input-field col s6 m6 l6">
+                                                    <input type="text" id="empresa-otra-redsocial" name="empresa-otra-redsocial">
+                                                    <label for="empresa-otra-redsocial">Otro</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card horizontal" id="empresa-representante">
+                                <div class="card-stacked">
+                                    <div class="card-action">
+                                        <p>
+                                            <b>
+                                                <h4>Información del Representante</h4>
+                                            </b>
+                                        </p>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12 l12 m12">
+                                                <div class="input-field">
+                                                    <input type="text" id="name" name="name">
+                                                    <label for="name">Nombre</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s12 l12 m12">
+                                                <div class="input-field">
+                                                    <input type="text" id="email" name="email">
+                                                    <label for="email">Email</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col s12 l12 m12">
+                                                    <div class="input-field">
+                                                        <input type="text" id="telefono" name="telefono">
+                                                        <label for="telefono">Telefono</label>
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+                <div class="row">
+                    <div class="col s12 l12 m12">
+                        <button href="" class="waves-effect waves-light green btn right" type="submit">Guardar</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/twitter-widgets.min.js"></script>
+<!--Tether necesario para bootrap-->
+<script src="../../js/tether.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/materialize.min.js"></script>
+<script src="../../js/jquery.validate.min.js"></script>
+<script src="../../js/assets/validate.min.js"></script>
+<script src="../../js/dropdown.min.js"></script>
+<script src="../../js/transition.min.js"></script>
+<script src="../../js/frontEnd.js" th:src="@{/js/frontEnd.js}"></script>

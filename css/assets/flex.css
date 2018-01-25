@@ -1,0 +1,63 @@
+/*********** Nube de tags  *********************/
+.flex-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: center;
+    -webkit-align-content: space-around;
+    -ms-flex-line-pack: distribute;
+    align-content: space-around;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+  
+  .flex-item {
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .flex-item.tags {
+    font-size: 10px;
+    width: auto;
+    border: 1px solid #d0cece;
+    padding: 0px 0.5em;
+    height: 28px;
+    margin: 4px 0 4px 4px;
+  }
+  
+  .flex-item.tags:hover {
+    background-color: var(--celeste);
+    border: 1px solid var(--celeste);
+    color: #fff;
+  }
+  .flex-item.agencias:hover {
+    background-color: grey;
+    border: 1px solid grey;
+    color: #fff;
+  }
+  .flex-item.agencias {
+    font-size: 17px;
+    font-weight: bold;
+    width: auto;
+    border: 1px solid var(--celeste_claro);
+    background-color: var(--celeste_claro);
+    height: auto;
+    margin: 0.5em 0 0.5em 1em;
+  }

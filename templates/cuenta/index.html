@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<!-- =============== APP STYLES ===============-->
+		<!--material design for bootstrap-->
+		<link rel="stylesheet" href="../../css/materialize.min.css" />
+		<!--Bootstrap 4-->
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<!--material icons for bootstrap-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link href="../../css/frontend.css" rel="stylesheet" />
+		<link href="../../css/assets/picker.css" rel="stylesheet" />
+	</STYLES>
+</head>
+
+<body>
+	<div role="navigation" class="ppal navbar navbar-fixed">
+		<nav>
+			<div class="nav-wrapper row">
+				<div class="col s12 m12 l12">
+					<div class="col m1 s1 l1">
+						<img src="../../img/logo.png" />
+						<a href="#" data-activates="slide-out" class="button-collapse">
+							<i class="material-icons">menu</i>
+						</a>
+					</div>
+					<div id="leftArrow" class="col m1 s1 l1 offset-s1 offset-m1 offset-l1">
+						<i class="material-icons">keyboard_arrow_left</i>
+					</div>
+					<div id="viewContainer" class="col m6 l6 s6">
+						<div id="tslshow">
+							<div class="bktibx">
+								<a class="itemCategory">HOME</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Cine y espect&aacute;culos</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Deportes</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Econom&iacutea</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Moda</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Mundo</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Pa&iacutes</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Tecnolog&iacutea</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">M&uacutesica</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Transporte</a>
+							</div>
+						</div>
+					</div>
+					<div id="rightArrow" class="col m1">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+					<div class="col m2 s2 l2 right">
+						<ul class=" col l12 m12 s12 ">
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Alertas">
+								<a class="right-menu" href="/alert/scheduler" th:method="GET">
+									<i class="material-icons">notifications</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Mis notas">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">event_note</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Favoritos">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">star</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Salir">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">power_settings_new</i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div class="wrapper">
+		<!--menu desplegable-->
+		<ul id="slide-out" class="side-nav">
+			<li>
+				<div class="user-view">
+					<div class="background">
+						<img src="../../img/background.jpg" />
+					</div>
+					<img class="circle" src="../../img/logo.png" />
+				</div>
+			</li>
+			<li>
+				<th:block th:if="${roleUser  == '[ADMIN]'}">
+					<ul th:replace="fragments/sidebar :: sidebar_ADMIN_Materialize"></ul>
+				</th:block>
+
+				<th:block th:if="${roleUser  == '[Periodista]'}">
+					<ul th:replace="fragments/sidebar :: sidebar_Periodista_Materialize"></ul>
+				</th:block>
+
+			</li>
+		</ul>
+		<!--sidebar-->
+		<!--body-->
+		<div id="gestion-cuenta" class="page-content">
+			<div class="row title-container">
+				<div class="col s12 left-align">
+					<div class="col s6">
+						<h2>
+							<p>
+								<b>Editar mis Datos</b>
+							</p>
+						</h2>
+						<p>Información del usuario</p>
+					</div>
+				</div>
+			</div>
+			<div id="form-account">
+				<form action="" class="validate-form" id="formulario-editar-cuenta">
+					<div class="row">
+						<div class="col m12">
+							<div class="input-field col s6 m6 l6">
+								<input type="text" id="name" name="name">
+								<label for="name">Nombre</label>
+							</div>
+							<div class="input-field col s6 m6 l6">
+								<input type="text" id="lastName" name="lastName">
+								<label for="lastName">Apellido</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<div class="input-field col s6 m6 l6">
+								<input type="email" id="email" name="email">
+								<label for="email">E-mail</label>
+							</div>
+							<div class="input-field col s6 m6 l6">
+								<input class="datepicker" id="birthDate" name="birthDate">
+								<label for="birthDate">Fecha de Nacimiento</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<div class="input-field col s6 m6 l6">
+								<input type="password" id="password" name="password">
+								<label for="password">Cambiar Contraseña</label>
+								</input>
+							</div>
+							<div class="input-field col s6 m6 l6">
+								<input type="password" id="password_confirm" name="password_confirm">
+								<label for="password_confirm">Confirmar Contraseña</label>
+								</input>
+							</div>
+						</div>
+					</div>
+				</form>
+
+				<div class="row">
+					<div class="col s12 l12 m12">
+						<button href="" class="waves-effect waves-light green btn right" type="submit">Guardar</button>
+					</div>
+				</div>
+				</form>
+			</div>
+			<div class="row title-container">
+				<div class="col s12 m12 l12">
+					<h3>
+						<p>
+							<b>Canales de Comunicación</b>
+						</p>
+					</h3>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col s12 l12 m12">
+					<button class="btn waves-effect waves-light" id="fb-canal">
+						<img src="../../img/fb-icon.png"></img> Facebook</button>
+					<span for="fb-canal">
+						<b>USUARIO NO REGISTRADO EN FACEBOOK</b>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/twitter-widgets.min.js"></script>
+<!--Tether necesario para bootrap-->
+<script src="../../js/tether.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/materialize.min.js"></script>
+<script src="../../js/jquery.validate.min.js"></script>
+<script src="../../js/assets/validate.min.js"></script>
+<script src="../../js/frontEnd.js" th:src="@{/js/frontEnd.js}"></script>
+

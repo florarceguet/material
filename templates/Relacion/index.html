@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<!-- =============== APP STYLES ===============-->
+	<!--material design for bootstrap-->
+	<link rel="stylesheet" href="../../css/materialize.min.css" />
+	<!--Bootstrap 4-->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<!--material icons for bootstrap-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="../../css/frontend.css" rel="stylesheet" />
+	<!-- documentacion de dropdown https://semantic-ui.com/modules/dropdown.html -->
+	<link rel="stylesheet" href="../../css/transition.min.css">
+	<link rel="stylesheet" href="../../css/dropdown.min.css">
+	<link rel="stylesheet" href="../../css/assets/dropdown.css">
+	<style>
+		#title-medio {
+			margin-top: 1.5em;
+		}
+
+
+		/** Dropdown **/
+
+		.ui.selection.dropdown:hover {
+			border-color: #fff;
+			border-bottom: 1px solid #9e9e9e !important;
+			box-shadow: none;
+		}
+
+		.ui.fluid.dropdown {
+			display: block;
+			min-width: 0em;
+		}
+
+		#listado-categorias-medio {
+			margin-top: 1em;
+		}
+
+		.card-panel.agencias.selected {
+			background-color: grey;
+			border: 1px solid grey;
+		}
+
+		/* 
+		.ui.selection.dropdown {
+			border: 0;
+			border-radius: 0;
+		}
+
+		.ui.multiple.dropdown>.label {
+
+			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+		}
+
+		.ui.search.dropdown,
+		.ui.search.dropdown>input.search {
+			border-bottom: 1px solid #9e9e9e;
+		}
+
+		.ui.multiple.search.dropdown>input.search {
+			height: 1em !important;
+		}
+
+		.ui.selection.active.dropdown .menu {
+			border-color: #fff !important;
+			box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3) !important;
+		} */
+	</style>
+	</STYLES>
+</head>
+
+<body>
+	<div role="navigation" class="ppal navbar navbar-fixed">
+		<nav>
+			<div class="nav-wrapper row">
+				<div class="col s12 m12 l12">
+					<div class="col m1 s1 l1">
+						<img src="../../img/logo.png" />
+						<a href="#" data-activates="slide-out" class="button-collapse">
+							<i class="material-icons">menu</i>
+						</a>
+					</div>
+					<div id="leftArrow" class="col m1 s1 l1 offset-s1 offset-m1 offset-l1">
+						<i class="material-icons">keyboard_arrow_left</i>
+					</div>
+					<div id="viewContainer" class="col m6 l6 s6">
+						<div id="tslshow">
+							<div class="bktibx">
+								<a class="itemCategory">HOME</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Cine y espect&aacute;culos</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Deportes</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Econom&iacutea</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Moda</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Mundo</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Pa&iacutes</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Tecnolog&iacutea</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">M&uacutesica</a>
+							</div>
+							<div class="bktibx">
+								<a class="itemCategory">Transporte</a>
+							</div>
+						</div>
+					</div>
+					<div id="rightArrow" class="col m1">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+					<div class="col m2 s2 l2 right">
+						<ul class=" col l12 m12 s12 ">
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Alertas">
+								<a class="right-menu" href="/alert/scheduler" th:method="GET">
+									<i class="material-icons">notifications</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Mis notas">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">event_note</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Favoritos">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">star</i>
+								</a>
+							</li>
+							<li class="col s3 m3 l3 tooltipped" data-position="top" data-delay="50" data-tooltip="Salir">
+								<a class="right-menu" href="/logout" th:method="GET">
+									<i class="material-icons">power_settings_new</i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div class="wrapper">
+		<!--menu desplegable-->
+		<ul id="slide-out" class="side-nav">
+			<li>
+				<div class="user-view">
+					<div class="background">
+						<img src="../../img/background.jpg" />
+					</div>
+					<img class="circle" src="../../img/logo.png" />
+				</div>
+			</li>
+			<li>
+				<th:block th:if="${roleUser  == '[ADMIN]'}">
+					<ul th:replace="fragments/sidebar :: sidebar_ADMIN_Materialize"></ul>
+				</th:block>
+
+				<th:block th:if="${roleUser  == '[Periodista]'}">
+					<ul th:replace="fragments/sidebar :: sidebar_Periodista_Materialize"></ul>
+				</th:block>
+
+			</li>
+		</ul>
+		<!--sidebar-->
+		<!--body-->
+		<div id="content-gestionUsuarios" class="page-content">
+			<div class="row title-container">
+				<div class="col s12 center-align">
+					<div class="col s12 m12 l12">
+						<h2>
+							<p>
+								<b> Relacionamiento de Categor&iacuteas .</b>
+							</p>
+						</h2>
+						<p>Desde aqu&iacute se pueden relacionar las Categor&iacuteas, definidas para este medio en la plataforma, con las Categor&iacuteas
+							de asignadas a los cables por cada agencia.</p>
+					</div>
+				</div>
+			</div>
+			<div id="relacion-categorias">
+				<div class="row">
+					<div class="col s12 l12 m12">
+						<ul class="flex-container">
+							<li class="flex-item agencias card-panel">
+								<span class="white-text">EFE</span>
+							</li>
+							<li class="flex-item agencias card-panel selected">
+								<span class="white-text">reuters.com</span>
+							</li>
+							<li class="flex-item agencias card-panel">
+								<span class="white-text">AFP</span>
+							</li>
+							<li class="flex-item agencias card-panel">
+								<span class="white-text">AP</span>
+							</li>
+							<li class="flex-item agencias card-panel">
+								<span class="white-text">bloomberg.com</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col m12 s12 l12">
+						<div class="col s4 m4 l4 offset-m1 offset-s1 offset-l1">
+							<div class="ui sub header"></div>
+							<div class="input-field ui fluid selection dropdown" id="select-plataforma">
+								<input type="hidden" name="plat-cat" id="plat-cat" tabindex="0">
+								<i class="dropdown icon"></i>
+								<div class="default text"></div>
+								<div class="menu">
+									<div class="item" value="1">Econom&iacutea</div>
+									<div class="item" value="2">Deportes</div>
+									<div class="item" value="3">Mundo</div>
+									<div class="item" value="1">Moda</div>
+									<div class="item" value="2">Teatro</div>
+									<div class="item" value="3">Tecnolog&iacutea</div>
+								</div>
+								<label>Categor&iacutea de la plataforma</label>
+							</div>
+						</div>
+						<div class="col s6 m6 l6">
+							<div class="ui sub header"></div>
+							<div class="input-field ui fluid multiple search selection dropdown hide" id="select-medio">
+								<input type="hidden" name="medio-cat" id="medio-cat" tabindex="0">
+								<i class="dropdown icon"></i>
+								<div class="default text"></div>
+								<div class="menu">
+									<div class="item" data-value="universidad"> universidad</div>
+									<div class="item" data-value="gobierno"> gobierno</div>
+									<div class="item" data-value="delitos corporativos"> delitos corporativos</div>
+									<div class="item" data-value="homicidio"> homicidio</div>
+									<div class="item" data-value="criminal"> criminal</div>
+									<div class="item" data-value="discriminación"> discriminación</div>
+									<div class="item" data-value="gente"> gente</div>
+									<div class="item" data-value="carnaval"> carnaval</div>
+									<div class="item" data-value="policía"> policía</div>
+									<div class="item" data-value="fuerzas armadas"> fuerzas armadas</div>
+									<div class="item" data-value="metales y minerales"> metales y minerales</div>
+									<div class="item" data-value="huelga"> huelga</div>
+									<div class="item" data-value="empresas"> empresas</div>
+									<div class="item" data-value="desastre natural"> desastre natural</div>
+									<div class="item" data-value="inversiones"> inversiones</div>
+									<div class="item" data-value="mercados y bolsas"> mercados y bolsas</div>
+									<div class="item" data-value="terrorismo"> terrorismo</div>
+									<div class="item" data-value="alimentos procesados para la venta"> alimentos procesados para la venta</div>
+									<div class="item" data-value="política económica"> política económica</div>
+									<div class="item" data-value="corrupción"> corrupción</div>
+									<div class="item" data-value="investigación"> investigación</div>
+									<div class="item" data-value="criminalidad"> criminalidad</div>
+									<div class="item" data-value="terremoto"> terremoto</div>
+									<div class="item" data-value="construcción pesada"> construcción pesada</div>
+									<div class="item" data-value="senado y cámara de diputados"> senado y cámara de diputados</div>
+									<div class="item" data-value="justicia y derechos"> justicia y derechos</div>
+									<div class="item" data-value="elecciones locales"> elecciones locales</div>
+									<div class="item" data-value="manifestaciones violentas"> manifestaciones violentas</div>
+									<div class="item" data-value="fotografía"> fotografía</div>
+									<div class="item" data-value="investigación médica"> investigación médica</div>
+									<div class="item" data-value="fusiones, adquisiciones, absorciones"> fusiones, adquisiciones, absorciones</div>
+									<div class="item" data-value="erupción volcánica"> erupción volcánica</div>
+									<div class="item" data-value="partidos" class="selected active"> partidos</div>
+									<div class="item" data-value="transporte carretero"> transporte carretero</div>
+									<div class="item" data-value="negociaciones de paz"> negociaciones de paz</div>
+									<div class="item" data-value="guerrilla"> guerrilla</div>
+									<div class="item" data-value="animales"> animales</div>
+									<div class="item" data-value="preservación"> preservación</div>
+									<div class="item" data-value="papa"> papa</div>
+									<div class="item" data-value="campañas políticas"> campañas políticas</div>
+									<div class="item" data-value="arresto"> arresto</div>
+									<div class="item" data-value="transporte"> transporte</div>
+									<div class="item" data-value="fallecimiento y morir"> fallecimiento y morir</div>
+									<div class="item" data-value="incendios"> incendios</div>
+									<div class="item" data-value="proceso judicial"> proceso judicial</div>
+									<div class="item" data-value="sistemas de misiles"> sistemas de misiles</div>
+									<div class="item" data-value="producción y distribución deelectricidad"> producción y distribución deelectricidad</div>
+									<div class="item" data-value="ecosistema"> ecosistema</div>
+									<div class="item" data-value="relaciones internacionales"> relaciones internacionales</div>
+									<div class="item" data-value="homosexuales"> homosexuales</div>
+									<div class="item" data-value="transporte aéreo"> transporte aéreo</div>
+									<div class="item" data-value="ayuda internacional"> ayuda internacional</div>
+									<div class="item" data-value="acuerdos comerciales"> acuerdos comerciales</div>
+									<div class="item" data-value="comercio internacional (extranjero)"> comercio internacional (extranjero)</div>
+									<div class="item" data-value="cárcel"> cárcel</div>
+									<div class="item" data-value="enfermedades animales"> enfermedades animales</div>
+									<div class="item" data-value="crisis"> crisis</div>
+									<div class="item" data-value="cumbre"> cumbre</div>
+									<div class="item" data-value="armas nucleares"> armas nucleares</div>
+									<div class="item" data-value="accidente de transporte"> accidente de transporte</div>
+									<div class="item" data-value="radio"> radio</div>
+									<div class="item" data-value="asuntos sociales (general)"> asuntos sociales (general)</div>
+									<div class="item" data-value="ejecutivo (gobierno)"> ejecutivo (gobierno)</div>
+									<div class="item" data-value="cristianismo"> cristianismo</div>
+									<div class="item" data-value="celebridades"> celebridades</div>
+									<div class="item" data-value="nacionales o minorias etnicas"> nacionales o minorias etnicas</div>
+									<div class="item" data-value="petróleo y gas primarios"> petróleo y gas primarios</div>
+									<div class="item" data-value="refugiados"> refugiados</div>
+									<div class="item" data-value="ciclismo"> ciclismo</div>
+									<div class="item" data-value="organizaciones no gubernamentales"> organizaciones no gubernamentales</div>
+									<div class="item" data-value="referendos"> referendos</div>
+									<div class="item" data-value="festival de cine"> festival de cine</div>
+									<div class="item" data-value="boletines"> boletines</div>
+									<div class="item" data-value="lenguaje"> lenguaje</div>
+									<div class="item" data-value="motociclismo"> motociclismo</div>
+									<div class="item" data-value="juegos olímpicos de verano"> juegos olímpicos de verano</div>
+									<div class="item" data-value="inflación y deflación"> inflación y deflación</div>
+									<div class="item" data-value="vías navegables y marítimo"> vías navegables y marítimo</div>
+									<div class="item" data-value="liga mayor de béisbol (profesional estadounidense) - liga americana"> liga mayor de béisbol (profesional estadounidense)</div>
+									<div class="item" data-value="juicios"> juicios</div>
+									<div class="item" data-value="narcotráfico"> narcotráfico</div>
+									<div class="item" data-value="industrias de elaboración"> industrias de elaboración</div>
+									<div class="item" data-value="católico romano"> católico romano</div>
+									<div class="item" data-value="agricultura"> agricultura</div>
+									<div class="item" data-value="vela"> vela</div>
+									<div class="item" data-value="disenso político"> disenso político</div>
+									<div class="item" data-value="democracia"> democracia</div>
+									<div class="item" data-value="penas"> penas</div>
+									<div class="item" data-value="jefes de estado"> jefes de estado</div>
+									<div class="item" data-value="libertad de prensa"> libertad de prensa</div>
+									<div class="item" data-value="organizaciones de salud"> organizaciones de salud</div>
+									<div class="item" data-value="antropología"> antropología</div>
+									<div class="item" data-value="indicadores económicos"> indicadores económicos</div>
+									<div class="item" data-value="bancos centrales"> bancos centrales</div>
+									<div class="item" data-value="festivales o festivades religiosas"> festivales o festivades religiosas</div>
+									<div class="item" data-value="incendio premeditado"> incendio premeditado</div>
+									<div class="item" data-value="manufactura e ingeniería"> manufactura e ingeniería</div>
+									<div class="item" data-value="accidentes aéreos y espaciales"> accidentes aéreos y espaciales</div>
+									<div class="item" data-value="prueba de ruta"> prueba de ruta</div>
+									<div class="item" data-value="literatura"> literatura</div>
+									<div class="item" data-value="astronomía"> astronomía</div>
+									<div class="item" data-value="islam"> islam</div>
+									<div class="item" data-value="automobilismo"> automobilismo</div>
+									<div class="item" data-value="equipos automotrices"> equipos automotrices</div>
+									<div class="item" data-value="energ&iacuteaalternativa"> energ&iacuteaalternativa</div>
+									<div class="item" data-value="pronósticos"> pronósticos</div>
+									<div class="item" data-value="arqueología"> arqueología</div>
+									<div class="item" data-value="cultura (general)"> cultura (general)</div>
+									<div class="item" data-value="secuestro"> secuestro</div>
+									<div class="item" data-value="crimen de guerra"> crimen de guerra</div>
+									<div class="item" data-value="políticas nucleares"> políticas nucleares</div>
+									<div class="item" data-value="diarios y revistas"> diarios y revistas</div>
+									<div class="item" data-value="cienciasmeteorológicas"> cienciasmeteorológicas</div>
+									<div class="item" data-value="estados financieros trimestrales o semestrales"> estados financieros trimestrales o semestrales</div>
+									<div class="item" data-value="minería"> minería</div>
+									<div class="item" data-value="actividad pandillera"> actividad pandillera</div>
+									<div class="item" data-value="cámara baja"> cámara baja</div>
+									<div class="item" data-value="autoridades regionales"> autoridades regionales</div>
+									<div class="item" data-value="servicio de telecomunicaciones"> servicio de telecomunicaciones</div>
+									<div class="item" data-value="carrera por etapas"> carrera por etapas</div>
+									<div class="item" data-value="poe&iacutea"> poe&iacutea</div>
+									<div class="item" data-value="defensa"> defensa</div>
+									<div class="item" data-value="equipos de defensa"> equipos de defensa</div>
+									<div class="item" data-value="energ&iacuteay recursos"> energ&iacuteay recursos</div>
+									<div class="item" data-value="biología"> biología</div>
+									<div class="item" data-value="enfermedades"> enfermedades</div>
+									<div class="item" data-value="tormentas de viento"> tormentas de viento</div>
+									<div class="item" data-value="medicamento bajo prescripción médica"> medicamento bajo prescripción médica</div>
+									<div class="item" data-value="hospitales y clínicas"> hospitales y clínicas</div>
+									<div class="item" data-value="información para empresas"> información para empresas</div>
+									<div class="item" data-value="política (general)"> política (general)</div>
+									<div class="item" data-value="servicios bancarios"> servicios bancarios</div>
+									<div class="item" data-value="triatlón"> triatlón</div>
+									<div class="item" data-value="turismo y tiempo libre"> turismo y tiempo libre</div>
+									<div class="item" data-value="vinicultura"> vinicultura</div>
+									<div class="item" data-value="pobreza"> pobreza</div>
+									<div class="item" data-value="construcción de viviendas"> construcción de viviendas</div>
+									<div class="item" data-value="tráfico"> tráfico</div>
+									<div class="item" data-value="presupuesto estatal"> presupuesto estatal</div>
+									<div class="item" data-value="política monetaria y fiscal"> política monetaria y fiscal</div>
+									<div class="item" data-value="advertencia"> advertencia</div>
+									<div class="item" data-value="acusación"> acusación</div>
+									<div class="item" data-value="organizaciones de socorro"> organizaciones de socorro</div>
+									<div class="item" data-value="programas espaciales"> programas espaciales</div>
+									<div class="item" data-value="salarios y pensiones"> salarios y pensiones</div>
+									<div class="item" data-value="estudiantes"> estudiantes</div>
+									<div class="item" data-value="nba - asociación nacional de básquetbol (profesional estadounidense)"> nba - asociación nacional de básquetbol (profesional estadounidense)</div>
+									<div class="item" data-value="exportaciones"> exportaciones</div>
+									<div class="item" data-value="educación religiosa"> educación religiosa</div>
+									<div class="item" data-value="censura"> censura</div>
+									<div class="item" data-value="infancia"> infancia</div>
+									<div class="item" data-value="computación e informática"> computación e informática</div>
+									<div class="item" data-value="magistratura"> magistratura</div>
+									<div class="item" data-value="corte preliminar"> corte preliminar</div>
+									<div class="item" data-value="coi"> coi</div>
+									<div class="item" data-value="aborto"> aborto</div>
+									<div class="item" data-value="bienes de consumo"> bienes de consumo</div>
+									<div class="item" data-value="medios informativos"> medios informativos</div>
+									<div class="item" data-value="arma de fuego"> arma de fuego</div>
+									<div class="item" data-value="sóftbol"> sóftbol</div>
+									<div class="item" data-value="campeonato regional"> campeonato regional</div>
+									<div class="item" data-value="organizaciones deportivas"> organizaciones deportivas</div>
+									<div class="item" data-value="boxeo"> boxeo</div>
+									<div class="item" data-value="hardware"> hardware</div>
+									<div class="item" data-value="asalto sexual"> asalto sexual</div>
+									<div class="item" data-value="administración de corte"> administración de corte</div>
+									<div class="item" data-value="mercado laboral"> mercado laboral</div>
+									<div class="item" data-value="análisis"> análisis</div>
+									<div class="item" data-value="gasolina"> gasolina</div>
+									<div class="item" data-value="combustible diesel"> combustible diesel</div>
+									<div class="item" data-value="bebidas no alcohólicas"> bebidas no alcohólicas</div>
+									<div class="item" data-value="contaminación del agua"> contaminación del agua</div>
+									<div class="item" data-value="teatro"> teatro</div>
+									<div class="item" data-value="bioTecnolog&iacutea"> bioTecnolog&iacutea</div>
+									<div class="item" data-value="investigación"> investigación</div>
+									<div class="item" data-value="liga nacional de fútbol americano (nfl)."> liga nacional de fútbol americano (nfl).</div>
+									<div class="item" data-value="preescolar"> preescolar</div>
+									<div class="item" data-value="autoridades locales"> autoridades locales</div>
+									<div class="item" data-value="medios masivos"> medios masivos</div>
+									<div class="item" data-value="en línea"> en línea</div>
+									<div class="item" data-value="aeroespacial"> aeroespacial</div>
+									<div class="item" data-value="corte o tribunal internacional"> corte o tribunal internacional</div>
+									<div class="item" data-value="inundaciones"> inundaciones</div>
+									<div class="item" data-value="niñas"> niñas</div>
+									<div class="item" data-value="armas biológicas y químicas"> armas biológicas y químicas</div>
+									<div class="item" data-value="intervenciones militares internacionales"> intervenciones militares internacionales</div>
+									<div class="item" data-value="toros"> toros</div>
+									<div class="item" data-value="vestuario"> vestuario</div>
+									<div class="item" data-value="conflictos laborales"> conflictos laborales</div>
+									<div class="item" data-value="campeonato mundial"> campeonato mundial</div>
+									<div class="item" data-value="mercado de materias primas"> mercado de materias primas</div>
+									<div class="item" data-value="taekwondo"> taekwondo</div>
+									<div class="item" data-value="investigación y desarrollo"> investigación y desarrollo</div>
+									<div class="item" data-value="producción"> producción</div>
+									<div class="item" data-value="directorio - cambios y designaciones"> directorio - cambios y designaciones</div>
+									<div class="item" data-value="bebidas"> bebidas</div>
+									<div class="item" data-value="energ&iacutea(general)"> energ&iacutea(general)</div>
+									<div class="item" data-value="surf"> surf</div>
+									<div class="item" data-value="división entre religión y estado"> división entre religión y estado</div>
+									<div class="item" data-value="cultivos agrícolas"> cultivos agrícolas</div>
+									<div class="item" data-value="televisión"> televisión</div>
+									<div class="item" data-value="arquitectura"> arquitectura</div>
+									<div class="item" data-value="población"> población</div>
+									<div class="item" data-value="demografía"> demografía</div>
+									<div class="item" data-value="empleo"> empleo</div>
+									<div class="item" data-value="iniciativa y revocación ciudadanas"> iniciativa y revocación ciudadanas</div>
+									<div class="item" data-value="estudio"> estudio</div>
+									<div class="item" data-value="construcción e inmobiliaria"> construcción e inmobiliaria</div>
+									<div class="item" data-value="cámara alta"> cámara alta</div>
+									<div class="item" data-value="planificación de emergencia"> planificación de emergencia</div>
+									<div class="item" data-value="deuda estatal"> deuda estatal</div>
+									<div class="item" data-value="finanzas públicas"> finanzas públicas</div>
+									<div class="item" data-value="enfermedades contagiosas"> enfermedades contagiosas</div>
+									<div class="item" data-value="naturaleza"> naturaleza</div>
+									<div class="item" data-value="juegos de azar y loterías"> juegos de azar y loterías</div>
+									<div class="item" data-value="monumentos y patrimonio nacional"> monumentos y patrimonio nacional</div>
+									<div class="item" data-value="turismo"> turismo</div>
+									<div class="item" data-value="legislación"> legislación</div>
+									<div class="item" data-value="autoridades"> autoridades</div>
+									<div class="item" data-value="tasas de interés"> tasas de interés</div>
+									<div class="item" data-value="delitos informaticos"> delitos informaticos</div>
+									<div class="item" data-value="discapacitados"> discapacitados</div>
+									<div class="item" data-value="instituciones económicas internacionales"> instituciones económicas internacionales</div>
+									<div class="item" data-value="equipamiento militar"> equipamiento militar</div>
+									<div class="item" data-value="ciencias marinas"> ciencias marinas</div>
+									<div class="item" data-value="racismo"> racismo</div>
+									<div class="item" data-value="software"> software</div>
+									<div class="item" data-value="productos de salud y belleza"> productos de salud y belleza</div>
+									<div class="item" data-value="tabla de nieve (snowboard)"> tabla de nieve (snowboard)</div>
+									<div class="item" data-value="juegos olímpicos de invierno"> juegos olímpicos de invierno</div>
+									<div class="item" data-value="juegos paralímpicos"> juegos paralímpicos</div>
+									<div class="item" data-value="judo"> judo</div>
+									<div class="item" data-value="juegos"> juegos</div>
+									<div class="item" data-value="gastronomía, restoranes y cocina"> gastronomía, restoranes y cocina</div>
+									<div class="item" data-value="desempleo"> desempleo</div>
+									<div class="item" data-value="suicidio"> suicidio</div>
+									<div class="item" data-value="pintura"> pintura</div>
+									<div class="item" data-value="juegos panamericanos"> juegos panamericanos</div>
+									<div class="item" data-value="accidentes ferroviarios"> accidentes ferroviarios</div>
+									<div class="item" data-value="gran premio de velocidad"> gran premio de velocidad</div>
+									<div class="item" data-value="conducta abusiva"> conducta abusiva</div>
+									<div class="item" data-value="información general sobre el eventos climatológicos"> información general sobre el eventos climatológicos</div>
+									<div class="item" data-value="hambruna"> hambruna</div>
+									<div class="item" data-value="mercados emergentes"> mercados emergentes</div>
+									<div class="item" data-value="crimen organizado"> crimen organizado</div>
+									<div class="item" data-value="alianzas"> alianzas</div>
+									<div class="item" data-value="servicios financieros y comerciales"> servicios financieros y comerciales</div>
+									<div class="item" data-value="diarios y revistas"> diarios y revistas</div>
+									<div class="item" data-value="ficción"> ficción</div>
+									<div class="item" data-value="departamentos de gobierno"> departamentos de gobierno</div>
+									<div class="item" data-value="ferrocarril"> ferrocarril</div>
+									<div class="item" data-value="indigenas"> indigenas</div>
+									<div class="item" data-value="conflicto (general)"> conflicto (general)</div>
+									<div class="item" data-value="presupuestos"> presupuestos</div>
+								</div>
+								<label>Categor&iacutea del medio</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12 m12 l12">
+						<h2 id="title-medio" class="center-align">
+							<p>
+								<b>reuters.com</b>
+							</p>
+						</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12 l12 m12">
+						<table class="bordered" id="listado-categorias-medio">
+							<thead>
+								<tr>
+									<th>Categoria de la plataforma</th>
+									<th>Categor&iacutea del medio</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<td rowspan="2">
+									<b>Tecnologia</b>
+								</td>
+								<td>delitos inform&aacuteticos</td>
+								</tr>
+								<tr>
+									<td>energ&iacuteaalternativa</td>
+								</tr>
+								<tr>
+									<td>
+										<b>Musica</b>
+									</td>
+									<td>poe&iacutea</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/twitter-widgets.min.js"></script>
+<!--Tether necesario para bootrap-->
+<script src="../../js/tether.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/materialize.min.js"></script>
+<script src="../../js/jquery.validate.min.js"></script>
+<script src="../../js/transition.min.js"></script>
+<!-- <script src="https://raw.githubusercontent.com/Semantic-Org/UI-Transition/master/transition.js"></script> -->
+<script src="../../js/dropdown.min.js"></script>
+<link href="../../css/assets/flex.css" rel="stylesheet" />
+<script src="../../js/frontEnd.js" th:src="@{/js/frontEnd.js}"></script>
+<script>
+
+	// https://semantic-ui.com/modules/dropdown.html#/examples
+	$(document).ready(function () {
+		$(".ui.dropdown").dropdown("show")
+		$('.ui.dropdown').dropdown({
+			message: {
+				addResult: 'Add <b>{term}</b>',
+				count: '{count} selected',
+				maxSelections: 'Max {maxCount} selections',
+				noResults: 'No se encuentran resultados.'
+			},
+			onShow: function (value, text, $selectedItem) {
+				$(this).children('label').addClass('active');
+			}
+		});
+
+
+
+
+		// })
+		$("#select-plataforma").change(function () {
+			$("#select-medio").dropdown("clear")
+			if ($("#plat-cat").val().toLowerCase() == "Mundo".toLowerCase()) {
+				// seleccionar por default
+				seleccionarOpcion("gente");
+				seleccionarOpcion("manifestaciones violentas");
+			}
+
+		})
+
+		//cuando se clickea en algun recuadro de las agencias
+		$(".agencias").click(function (event) {
+			$(".agencias").removeClass('selected');
+			$(this).addClass('selected')
+			$("#title-medio").text($(this).children('span').text())
+		});
+		if ($("#medio-cat").val() != '') {
+			$("#select-medio label").addClass('active');
+		}
+		if ($("#plat-cat").val() != '') {
+			$("#select-plataforma label").addClass('active');
+		}
+		$("#plat-cat").change(function () {
+			$("#select-medio").removeClass('hide')
+		})
+
+	})
+	function seleccionarOpcion(opcion) {
+		$("#select-medio #medio-cat").val($("#select-medio #medio-cat").val() + ',' + opcion + '');
+		$("#select-medio .search").before('<a class="ui label transition visible" data-value="' + opcion + '" style="display: inline-block !important;">' + opcion + '<i class="delete icon"></i></a>');
+		$("#select-medio div[data-value='" + opcion + "']").addClass('filtered active')
+	}
+	
+</script>
+<!--    <script src="../../js/twitter-widget.js"></script> -->

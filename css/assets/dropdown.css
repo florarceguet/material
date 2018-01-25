@@ -1,0 +1,55 @@
+/** Dropdown **/
+
+.ui.selection.dropdown:hover {
+  border-color: #fff;
+  border-bottom: 1px solid #9e9e9e !important;
+  box-shadow: none;
+}
+
+.ui.fluid.dropdown {
+  display: block;
+  min-width: 0em;
+}
+#listado-categorias-medio {
+  margin-top: 1em;
+}
+.card-panel.agencias.selected {
+  background-color: grey;
+  border: 1px solid grey;
+}
+.ui.selection.dropdown {
+  border-color: #fff;
+  border-bottom: 1px solid #9e9e9e !important;
+  border-radius: 0;
+}
+.ui.multiple.dropdown > .label {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+.ui.search.dropdown,
+.ui.search.dropdown > input.search {
+  border-bottom: 1px solid #9e9e9e;
+}
+.ui.multiple.search.dropdown > input.search {
+  height: 1em !important;
+}
+.ui.selection.active.dropdown .menu {
+  border-color: #fff !important;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.3) !important;
+}
+.menu.transition.visible {
+  height: auto;
+}
+#modal-gestion-rss .menu.transition.visible {
+  height: 9em !important;
+}
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+  font-size: 16px;
+  color: var(--celeste);
+  display: block;
+  line-height: 22px;
+  padding: 14px 16px;
+}

@@ -1,0 +1,89 @@
+/************** Tarjetas **************************/
+.card {
+    margin-left: 1em;
+}
+
+.card-login{
+    margin-left: 1em;
+    width: 80%;
+}
+
+.card.piezas .card-content p {
+    margin: 0;
+    color: inherit;
+    color: black;
+    text-align: justify;
+    font-family: "Manuale";
+}
+
+.card .card-content .card-title {
+    display: block;
+    line-height: 32px;
+    margin-bottom: 8px;
+    color: black;
+    font-weight: bolder;
+    font-family: "Libre Baskerville";
+}
+
+.card .card-action {
+    position: relative;
+    background-color: inherit;
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+    padding: 0;
+}
+
+#tabs-container .card .col.s6.m6.l6 {
+    padding: 0;
+}
+
+
+.card .time {
+    text-align: center;
+    height: 3em;
+    background-color: var(--celeste_claro);
+    color: white;
+    font-weight: 700;
+    line-height: 2;
+    border-radius: .25rem;
+    display: table;
+    background: linear-gradient(45deg, #0288d1 0%, #26c6da 100%);
+    width: 8em !important;
+}
+
+.card-data p {
+    margin-bottom: 0;
+}
+.card-data{
+    text-align: center;
+}
+
+.time p {
+    display: table-cell;
+    font-size: 23px;
+    font-weight: bolder;
+}
+
+.card .source, .card .category {
+    line-height: 2;
+    margin-top: 7px;
+    width: auto !important;
+    font-weight: bold;
+
+}
+
+.category {
+    padding-right: 10px;
+}
+
+.source {
+    border-right: 0.1em solid lightgrey;
+    /*padding-right: 4em !important;*/
+    width: auto !important;
+}
+
+.card .source p, .card .category p {
+    font-family: "Poppins";
+    margin-bottom: 0;
+    padding: 0 1em 0 0;
+    width: auto !important;
+}
