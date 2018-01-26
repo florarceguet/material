@@ -222,3 +222,9 @@ $(".orderable").click(function () {
 
   }
 })
+
+function toastOpen(mensaje, clase, otra) {
+  Materialize.toast(mensaje, 1500, 'rounded ' + clase, function () {
+    $("#cerrar-modal").click();
+  })
+}

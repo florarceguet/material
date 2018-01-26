@@ -57,12 +57,13 @@ body {
 .user-view img {
   height: 12em;
 }
-ul.dashboard-menu li a,ul.filtros-menu {
+ul.dashboard-menu li a,
+ul.filtros-menu {
   font-size: 11px;
   padding-left: 1.5em;
 }
 .collapsible-header {
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
 .dashboard-menu li > a:hover {
   color: white;
@@ -83,25 +84,31 @@ ul.dashboard-menu li a,ul.filtros-menu {
   margin-right: 2px;
 }
 
-.side-nav .collapsible-header, .side-nav.fixed .collapsible-header {
+.side-nav .collapsible-header,
+.side-nav.fixed .collapsible-header {
   padding: 0;
 }
-.side-nav .collapsible-header, .side-nav.fixed .collapsible-header {
+.side-nav .collapsible-header,
+.side-nav.fixed .collapsible-header {
   border: none;
   line-height: inherit;
   height: inherit;
 }
 
-.side-nav .collapsible-header:hover, .side-nav.fixed .collapsible-header:hover, .side-nav .collapsible-header, .side-nav.fixed .collapsible-header {
+.side-nav .collapsible-header:hover,
+.side-nav.fixed .collapsible-header:hover,
+.side-nav .collapsible-header,
+.side-nav.fixed .collapsible-header {
   background-color: white;
 }
-.container-sidebar .menu-title, #slide-out .menu-title {
+.container-sidebar .menu-title,
+#slide-out .menu-title {
   font-weight: bold;
   font-size: 12px;
   margin-bottom: 1em;
 }
-.circle{
-   background-color: #ddd;
+.circle {
+  background-color: #ddd;
 }
 
 main,
@@ -355,7 +362,6 @@ input.error {
   margin-bottom: 2em;
 }
 
-
 .ordered {
   color: black;
 }
@@ -448,11 +454,78 @@ input.error {
   opacity: 0.8;
 }
 
-
- table a:focus {
+table a:focus {
   color: #014c8c !important;
 }
- th span.orderable {
+th span.orderable {
   cursor: pointer;
   /* color: var(--azul); */
+}
+
+.toast {
+  float: center;
+  font-family: "Poppins";
+  font-weight: bold !important;
+  color: white !important;
+  font-size: 1rem !important;
+}
+.toast.exito {
+  background-color: #8dd467;
+}
+.toast.error {
+  background-color: #d05882;
+}
+#toast-container {
+  width: 40%;
+  top: auto !important;
+  bottom: 5%;
+  right: 50%;
+  max-width: 86%;
+  position: absolute !important;
+}
+
+.errorPAge img {
+  align-items: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.help-text {
+  color: var(--azul);
+}
+@media (max-height: 800px) {
+  .help-text {
+    font-size: 1.25rem;
+  }
+  .errorPAge img {
+    height: 29em;
+  }
+
+  .title-error-page {
+    font-size: 3rem;
+  }
+}
+@media (min-height: 801px) and (max-height: 1019px) {
+  .errorPAge img {
+    height: 34em;
+  }
+
+  .title-error-page {
+    font-size: 4rem;
+  }
+  .help-text {
+    font-size: 1.5rem;
+  }
+}
+@media (min-height: 1020px) {
+  .errorPAge img {
+    height: 44em;
+  }
+
+  .title-error-page {
+    font-size: 6rem;
+  }
+  .help-text {
+    font-size: 1.75rem;
+  }
 }

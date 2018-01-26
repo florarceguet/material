@@ -200,7 +200,7 @@
 													<img src="https://pbs.twimg.com/profile_images/920066421748625409/xQU5I4mZ_400x400.jpg" alt="" class="circle responsive-img">
 												</span>
 												<span class="user-name">
-													<b>An√≠bal Fern√°ndez</b>
+													<b>AnÌbal Fern·ndez</b>
 												</span>
 											</td>
 											<td>
@@ -386,28 +386,27 @@
 				</div>
 				<div class="row">
 					<div class="col m12 s12 l12">
-						<form>
+						<form id="twitter-usuario-form">
 							<div class="input-field col s12">
 								<input placeholder="Ingrese usuario" id="Position" name="twitterUserScreenName" type="text">
 								<label for="url-rss">Buscar Usuario</label>
 							</div>
 							<div class="input-field col s12">
-								
-									<div class="ui sub header"></div>
-									<div class="input-field ui fluid selection dropdown" id="select-plataforma">
-										<input type="hidden" name="plat-cat" id="plat-cat" tabindex="0">
-										<i class="dropdown icon"></i>
-										<div class="default text"></div>
-										<div class="menu">
-											<div class="item" value="1">Econom&iacutea</div>
-											<div class="item" value="2">Deportes</div>
-											<div class="item" value="3">Mundo</div>
-											<div class="item" value="1">Moda</div>
-											<div class="item" value="2">Teatro</div>
-											<div class="item" value="3">Tecnolog&iacutea</div>
-										</div>
-										<label>Categor&iacutea de la plataforma</label>
-								
+
+								<div class="ui sub header"></div>
+								<div class="input-field ui fluid selection dropdown" id="select-plataforma">
+									<input type="hidden" name="plat-cat" id="plat-cat" tabindex="0">
+									<i class="dropdown icon"></i>
+									<div class="default text"></div>
+									<div class="menu">
+										<div class="item" value="1">Econom&iacutea</div>
+										<div class="item" value="2">Deportes</div>
+										<div class="item" value="3">Mundo</div>
+										<div class="item" value="1">Moda</div>
+										<div class="item" value="2">Teatro</div>
+										<div class="item" value="3">Tecnolog&iacutea</div>
+									</div>
+									<label>Categor&iacutea de la plataforma</label>
 								</div>
 							</div>
 							<button id="cerrar-modal" class="btn waves-effect waves-light grey lighten-1 right modal-close">Cerrar</button>
@@ -430,3 +429,10 @@
 <script src="../../js/frontEnd.js" th:src="@{/js/frontEnd.js}"></script>
 <script src="../../js/transition.min.js"></script>
 <script src="../../js/dropdown.min.js"></script>
+<script>
+	$("#guardar-usuario-twitter").click(function () {
+		toastOpen("Usuario agregado con &eacute;xito!", "exito", '')
+		toastOpen("Hubo un problema, recargue la p&aacute;gina y vuelva a intentarlo", "error", '')
+		return false;
+	})	
+</script>
