@@ -420,13 +420,14 @@ span{
 
 }
 #fecha{
+    font-weight: 600;
     color:black;
 }
 .linea hr{
     border-top: 2px solid var(--celeste_claro);
 }
 .fecha-divisor{
-    margin: 1em 0;
+    margin: 2em 0 1em 0;
 }
 
 blockquote.twitter-tweet {

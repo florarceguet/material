@@ -16,59 +16,7 @@
 	<link rel="stylesheet" href="../../css/dropdown.min.css">
 	<link rel="stylesheet" href="../../css/assets/dropdown.css">
 	<style>
-		#title-medio {
-			margin-top: 1.5em;
-		}
-
-
-		/** Dropdown **/
-
-		.ui.selection.dropdown:hover {
-			border-color: #fff;
-			border-bottom: 1px solid #9e9e9e !important;
-			box-shadow: none;
-		}
-
-		.ui.fluid.dropdown {
-			display: block;
-			min-width: 0em;
-		}
-
-		#listado-categorias-medio {
-			margin-top: 1em;
-		}
-
-		.card-panel.agencias.selected {
-			background-color: grey;
-			border: 1px solid grey;
-		}
-
-		/* 
-		.ui.selection.dropdown {
-			border: 0;
-			border-radius: 0;
-		}
-
-		.ui.multiple.dropdown>.label {
-
-			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-		}
-
-		.ui.search.dropdown,
-		.ui.search.dropdown>input.search {
-			border-bottom: 1px solid #9e9e9e;
-		}
-
-		.ui.multiple.search.dropdown>input.search {
-			height: 1em !important;
-		}
-
-		.ui.selection.active.dropdown .menu {
-			border-color: #fff !important;
-			box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3) !important;
-		} */
 	</style>
-	</STYLES>
 </head>
 
 <body>
@@ -176,16 +124,12 @@
 		<!--body-->
 		<div id="content-gestionUsuarios" class="page-content">
 			<div class="row title-container">
-				<div class="col s12 center-align">
-					<div class="col s12 m12 l12">
-						<h2>
-							<p>
-								<b> Relacionamiento de Categor&iacuteas .</b>
-							</p>
-						</h2>
-						<p>Desde aqu&iacute se pueden relacionar las Categor&iacuteas, definidas para este medio en la plataforma, con las Categor&iacuteas
-							de asignadas a los cables por cada agencia.</p>
-					</div>
+				<div class="col s12 m12 l12">
+					<h2>
+						<p>
+							<b> Relacionamiento de Categor&iacuteas .</b>
+						</p>
+					</h2>
 				</div>
 			</div>
 			<div id="relacion-categorias">
@@ -602,6 +546,6 @@
 		$("#select-medio .search").before('<a class="ui label transition visible" data-value="' + opcion + '" style="display: inline-block !important;">' + opcion + '<i class="delete icon"></i></a>');
 		$("#select-medio div[data-value='" + opcion + "']").addClass('filtered active')
 	}
-	
+
 </script>
 <!--    <script src="../../js/twitter-widget.js"></script> -->

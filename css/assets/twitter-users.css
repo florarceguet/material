@@ -1,9 +1,9 @@
 /*Cargar usuarios de twitter*/
-.agregar-cuentas-twitter .title-container img {
+#agregar-cuentas-twitter .title-container img {
     height: 2em;
     margin-left: 1em;
   }
-  .agregar-cuentas-twitter img.responsive-img,
+  #agregar-cuentas-twitter img.responsive-img,
   video.responsive-video {
     height: 3em;
     width: 3em;

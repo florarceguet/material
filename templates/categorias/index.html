@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<!-- =============== APP STYLES ===============-->
-		<!--material design for bootstrap-->
-		<link rel="stylesheet" href="../../css/materialize.min.css" />
-		<!--Bootstrap 4-->
-		<link rel="stylesheet" href="../../css/bootstrap.min.css">
-		<!--material icons for bootstrap-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-		<link href="../../css/frontend.css" rel="stylesheet" />
-	</STYLES>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<!-- =============== APP STYLES ===============-->
+	<!--material design for bootstrap-->
+	<link rel="stylesheet" href="../../css/materialize.min.css" />
+	<!--Bootstrap 4-->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<!--material icons for bootstrap-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="../../css/frontend.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -118,20 +118,27 @@
 		<!--body-->
 		<div id="content-listaCategorias" class="page-content">
 			<div class="row title-container">
-				<div class="col s12 left-align">
-					<div class="col s6">
-						<h2>
+				<div class="col s12 m12 l12">
+					<h2>
+						<p>
 							<b>Agregar nuevas Categor&iacuteas.</b>
-						</h2>
-						<p>Desde esta pantalla podr&aacute incluir nuevas Categor&iacuteas en la plataforma.</p>
-					</div>
-					<a data-target="modal-categorias" class="btn-floating btn-large z-depth-2 right waves-effect waves-light pink tooltipped modal-trigger"
-					 data-position="bottom" data-delay="50" data-tooltip="Agregar rss">
-						<i class="material-icons">add</i>
-					</a>
+						</p>
+					</h2>
+
 				</div>
+
+				<a data-target="modal-categorias" class="btn-floating btn-large z-depth-2 right waves-effect waves-light pink tooltipped modal-trigger"
+				 data-position="bottom" data-delay="50" data-tooltip="Agregar rss">
+					<i class="material-icons">add</i>
+				</a>
+				<!-- todo: sacar esto que era para pruebas -->
+				<!-- <a class="btn-floating btn-large z-depth-2 right waves-effect waves-light pink tooltipped " data-position="bottom" data-delay="50"
+				 data-tooltip="Agregar rss">
+					<i class="material-icons" @click="post()">add</i>
+				</a> -->
 			</div>
-			<div id="lista-de-categorias">
+
+			<div id="lista-de-categorias" v-if="categorias.length > 0">
 				<div class="row">
 					<div class="col m12 s12 l12">
 						<div class="col s10 m10 l10 offset-s1 offset-m1 offset-l1">
@@ -147,36 +154,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Home</td>
+									<tr v-for="(cat,index) in categorias" :key="index">
+										<td class="">{{cat.nombre}}</td>
 										<td>
 											<span>
-												<a href="#!" class="secondary-content tooltipped to-switch" data-position="bottom" data-delay="50" data-tooltip="Actualizar">
-													<i class="material-icons small refrescar left">refresh</i>
+												<a class="secondary-content tooltipped to-switch" @click="eliminar(index,cat.id)" data-position="bottom" data-delay="50"
+												 data-tooltip="Borrar">
+													<i class="material-icons eliminar left small">delete_forever</i>
 												</a>
 											</span>
 											<span>
-												<a href="#!" class="secondary-content tooltipped to-switch" data-position="bottom" data-delay="50" data-tooltip="Borrar">
-													<i class="material-icons eliminar left small">delete_forever</i>
+												<a @click="getById(index,cat.id)" class="secondary-content tooltipped to-switch" data-position="bottom" data-delay="50" data-tooltip="Modificar">
+													<i class="material-icons small refrescar left">refresh</i>
 												</a>
 											</span>
 										</td>
 									</tr>
-									<tr>
-										<td>Cine y espect&aacuteculo</td>
-										<td>
-											<span>
-												<a href="#!" class="secondary-content tooltipped to-switch" data-position="bottom" data-delay="50" data-tooltip="Actualizar">
-													<i class="material-icons small refrescar left">refresh</i>
-												</a>
-											</span>
-											<span>
-												<a href="#!" class="secondary-content tooltipped to-switch" data-position="bottom" data-delay="50" data-tooltip="Borrar">
-													<i class="material-icons eliminar left small">delete_forever</i>
-												</a>
-											</span>
-										</td>
-									</tr>
+
 								</tbody>
 							</table>
 						</div>
@@ -191,22 +185,22 @@
 								</a>
 							</li>
 							<li class="active">
-								<a href="#!">1</a>
+								<a>1</a>
 							</li>
 							<li class="waves-effect">
-								<a href="#!">2</a>
+								<a>2</a>
 							</li>
 							<li class="waves-effect">
-								<a href="#!">3</a>
+								<a>3</a>
 							</li>
 							<li class="waves-effect">
-								<a href="#!">4</a>
+								<a>4</a>
 							</li>
 							<li class="waves-effect">
-								<a href="#!">5</a>
+								<a>5</a>
 							</li>
 							<li class="waves-effect">
-								<a href="#!">
+								<a>
 									<i class="material-icons">chevron_right</i>
 								</a>
 							</li>
@@ -214,36 +208,64 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<!-- Modal Structure -->
-	<div id="modal-categorias" class="modal">
-		<div class="modal-content">
-			<div class="row">
-				<div class="col s12 m12 l12 modal-title">
-					<h2>
-						<b>Agregar Categor&iacutea</b>
-					</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col m12 s12 l12">
-					<form>
-						<div class="input-field col s12">
-							<input placeholder='Nombre de la Categoría' id="medioCategoryName" name="medioCategoryName" type="text">
-							<label for="medioCategoryName">Nombre de la nueva Categor&iacutea</label>
+
+
+			<!-- Modal Structure -->
+			<div id="modal-categorias" class="modal">
+				<div class="modal-content">
+					<div class="row">
+						<div class="col s12 m12 l12 modal-title">
+							<h2>
+								<b>Agregar Categor&iacutea</b>
+							</h2>
 						</div>
+					</div>
+					<div class="row">
+						<div class="col m12 s12 l12">
+							<form @submit="post()">
+								<div class="input-field col s12">
+									<input v-model="categorias.nombre" placeholder='Nombre de la Categoría' id="medioCategoryName" name="medioCategoryName" type="text">
+									<label for="medioCategoryName">Nombre de la nueva Categor&iacutea</label>
+								</div>
+								<button id="guardar-rss" type="submit" class=" guardar btn waves-effect waves-light light-green right">Guardar</button>
+							</form>
+							<button id="cerrar-modal" class="btn waves-effect waves-light grey lighten-1 right modal-close">Cerrar</button>
 
-						<button id="cerrar-modal" class="btn waves-effect waves-light grey lighten-1 right modal-close">Cerrar</button>
-						<button id="guardar-rss" class=" guardar btn waves-effect waves-light light-green right" type="submit" name="action">Guardar</button>
-					</form>
+						</div>
+					</div>
 				</div>
+
+			</div>
+			<!-- Modal Structure -->
+			<div id="modal-editar-categorias" class="modal">
+				<div class="modal-content">
+					<div class="row">
+						<div class="col s12 m12 l12 modal-title">
+							<h2>
+								<b>Modificar Categor&iacutea</b>
+							</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12 s12 l12">
+							<form @submit="put()">
+								<div class="input-field col s12">
+									<input v-model="categorias.nombre" placeholder='Nombre de la Categoría' id="medioCategoryName" name="medioCategoryName" type="text">
+									<label for="medioCategoryName">Nombre de la nueva Categor&iacutea</label>
+								</div>
+								<button id="guardar-rss" type="submit" class=" guardar btn waves-effect waves-light light-green right">Guardar</button>
+							</form>
+							<button id="cerrar-modal" class="btn waves-effect waves-light grey lighten-1 right modal-close">Cerrar</button>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
-
 	</div>
-
 </body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios@0.17.1/dist/axios.min.js"></script>
 <script href="../js/periodista.js"></script>
 <script src="../../js/jquery.min.js"></script>
 <script src="../../js/twitter-widgets.min.js"></script>
@@ -252,4 +274,91 @@
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/materialize.min.js"></script>
 <script src="../../js/frontEnd.js" th:src="@{/js/frontEnd.js}"></script>
-<!--    <script src="../../js/twitter-widget.js"></script> -->
+<script>
+	vm = new Vue({
+		//indicamos a que elemento le vamos a aplicar vue
+		el: '#content-listaCategorias',
+
+		data() {
+			//establecemos que datos va a usar el componente
+			return {
+				categorias: [],
+
+
+			}
+		},
+		mounted() {
+			// cuando se aplica vue
+			this.get();
+		},
+		methods: {
+			get: function () {
+				axios.get('http://192.168.224.169:3000/categorias')
+					.then(response => {
+						this.categorias = response.data;
+					});
+			},
+			post: function () {
+				axios.post('http://192.168.224.169:3000/categorias', {
+					nombre: this.categorias.nombre
+				}).then(response => {
+					//cuando hay que agregar una funcion, creamos la variable self para guardar el this
+					var self = this;
+					setTimeout(function () {
+						// el post devuelve el ultimo elemento que se agrego, asique se lo agregamos al modelo, 
+						//y asi se actualiza el listado
+						self.categorias.push(response.data)
+					}, 4000)
+				});
+				return false;
+			},
+			getById: function (index, id) {
+				axios.get('http://192.168.224.169:3000/categorias/' + id)
+					.then(response => {
+						//cuando hay que agregar una funcion, creamos la variable self para guardar el this
+						var self = this;
+						this.categorias.nombre = response.data.nombre
+						this.categorias.id = response.data.id
+											$("#modal-editar-categorias").modal("open")
+						$("#modal-editar-categorias input").val(this.categorias.nombre)
+					
+					})
+					.catch(error => {
+						alert(error)
+					});
+			},
+			put: function () {
+				axios.put('http://192.168.224.169:3000/categorias/' + this.categorias.id, {
+					nombre: this.categorias.nombre
+				})
+					.then(response => {
+						// //cuando hay que agregar una funcion, creamos la variable self para guardar el this
+						// var self = this;
+						console.log(response.data)
+						// this.categorias.nombre = response.data.nombre
+
+						// $("#modal-categorias").modal("open")
+					})
+					.catch(error => {
+						alert(error)
+					});
+				return false;
+			},
+			//delete no podemos poner porque lo entiende como funcion de JS y no como metodo de Vue
+			eliminar: function (index, id) {
+				//cuando hay que agregar una funcion, creamos la variable self para guardar el this
+				var self = this;
+				axios.delete('http://192.168.224.169:3000/categorias/' + id)
+					.then(function (response) {
+						self.categorias.splice(index, 1)
+					}).catch(error => {
+						alert(error)
+					});
+			}
+		}
+	})
+	$("#cerrar-modal").click(function () {
+		return false;
+	})
+
+</script>

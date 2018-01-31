@@ -456,3 +456,41 @@ input.error {
   cursor: pointer;
   /* color: var(--azul); */
 }
+/* alertas y reportes */
+#alerta-reportes-table {
+  margin-top: 3em;
+}
+
+#alerta-reportes-table img {
+  height: 3em;
+  width: auto;
+}
+
+#alerta-reportes-table td,
+#alertas-reportes-table th span {
+  text-align: center !important;
+}
+
+#alerta-reportes-table .circle {
+  background-color: transparent;
+  margin: 0 .2em !important;
+}
+
+#alerta-reportes-table .alertas-iconos {
+  cursor: pointer;
+}
+
+/* relacion de categorias */
+#title-medio {
+  margin-top: 1.5em;
+}
+#listado-categorias-medio {
+  margin-top: 1em;
+}
+.card-panel.agencias.selected {
+  background-color: grey;
+  border: 1px solid grey;
+}
+.btn-floating.btn-large{
+  margin-top: -1em;
+}
